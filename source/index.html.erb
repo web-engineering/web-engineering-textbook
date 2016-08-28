@@ -6,56 +6,28 @@ Web Engineering - a textbook
   <h2>About this Book</h2>
   <p>This is a textbook for the second year of a computer
   science or "media informatics" degree program.  It builds
-  on <a href="http://web-development.github.com">Web Development</a> 
-  (which is only available in german).</p>
+  on <a href="https://web-development.github.io">Web Development</a> 
+  (in german) and runs parallell to
+  <a href="https://backend-development.github.io">Backend Development</a>  and
+  <a href="https://web-development.github.io">Frontend Development</a>.</p>
 
   <p>This book is not a self-contained work: There are great
   resources for learning about the tools and technologies of web engineering
   - this book tries to use
   these resources, and bind them together into a coherent study plan.</p>
 
-  <p>It was written and published by Brigitte Jellinek
+  <p>It was written and published by Brigitte Jellinek and Hannes Moser
   in the hope that it will be useful to lecturers and students
   in educational institutions as well as to self-directed learners on the internet.
   </p>
 <% end %>
 
-<% content_for :index_section do %>
-<div id="subCol">
-  <dl>
-    <!--
-    <dd class="kindle">This textbook is also available for <%= link_to 'Kindle', @mobi %>.</dd>
-    -->
-    <dd class="work-in-progress"><p>This whole book is currently a work in progress. <p>While still useful, it may contain incomplete information and even errors. <p>You can help by reviewing the documents and posting your comments and corrections.</dd>
-  </dl>
-</div>
-<% end %>
+<h3>What is Web Engineering</h3>
 
-
-<h3>Why Web Engineering</h3>
-
-<p>Is there really a need for "Web Engineering" as a separate subject?
-Doesn't "Software Engineering" cover Web Development also?</p>
-
-<p>I would argue that web development has reached a level of
-complexity where it makes sense to study it in depth, in it's
-own right.  Web projects have some features in common, that separate
-them from other software projects:</p>
-
-<ul>
-  <li><strong>different people</strong>: in web projects there are many 
-  non-programmers involved: designers, usability-experts, community managers, ... 
-  more so than in other software development projects.</li>
-  <li><strong>different languages</strong>: for web development dynamic 
-  languages are used. this implies different design patterns 
-  than strongly typed languages</li>
-  <li><strong>no software in boxes</strong>: web apps are not delivered 
-  once a year in a box. they have to be maintained and updated all 
-  the time, continous delivery is needed!</li>
-</ul>
-
-<p>This textbook will try to teach you about general good software engineering practices
-while always sticking to examples that are actually useful in web development today.</p>
+<p>Under this title we collect all the stuff that
+does not fit neatly into "backend" or "frontend" development:
+workflows, tools, operations.
+</p>
 
 <% documents_by_section.each do |section| %>
   <h3><%= section['name'] %></h3>

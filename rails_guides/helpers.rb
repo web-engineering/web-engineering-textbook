@@ -30,9 +30,9 @@ module RailsGuides
       if position.nil?
         documents_by_section
       elsif position == 'L'
-        documents_by_section[0,2]
+        documents_by_section[0,1]
       else
-        documents_by_section[2,2]
+        documents_by_section[1,2]
       end
     end
 
