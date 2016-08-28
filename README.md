@@ -3,14 +3,16 @@
 My Textbook on Web Engineering. Developed on github, published at
 http://web-engineering.github.com
 
-I hope this grows into a full textbook over time,
-like http://web-development.github.com did.
+This covers web workflows and web operations.
+See my other books:
+
+* http://web-development.github.io - introduction to html, css, javascript, php. in german
+* http://backend--development.github.io - ruby on rails and nodes.js
 
 
 ## How to Read the book
 
-Point your browser at
-http://web-engineering.github.com
+Point your browser at http://web-engineering.github.io
 
 
 ## How to contribute small changes

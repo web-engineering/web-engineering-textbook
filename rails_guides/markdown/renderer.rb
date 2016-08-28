@@ -23,7 +23,7 @@ HTML
       end
 
       def paragraph(text)
-        if text =~ /^(TIP|IMPORTANT|CAUTION|WARNING|NOTE|INFO|TODO)[.:](.*?)/
+        if text =~ /^(TIP|IMPORTANT|CAUTION|WARNING|NOTE|REPO|INFO|TODO)[.:](.*?)/
           convert_notes(text)
         elsif text =~ /^\[<sup>(\d+)\]:<\/sup> (.+)$/
           linkback = %(<a href="#footnote-#{$1}-ref"><sup>#{$1}</sup></a>)
@@ -65,7 +65,7 @@ HTML
           # if a bulleted list follows the first item is not rendered
           # as a list item, but as a paragraph starting with a plain
           # asterisk.
-          body.gsub(/^(TIP|IMPORTANT|CAUTION|WARNING|NOTE|INFO|TODO)[.:](.*?)(\n(?=\n)|\Z)/m) do |m|
+          body.gsub(/^(TIP|IMPORTANT|REPO|CAUTION|WARNING|NOTE|INFO|TODO)[.:](.*?)(\n(?=\n)|\Z)/m) do |m|
             css_class = case $1
                         when 'CAUTION', 'IMPORTANT'
                           'warning'

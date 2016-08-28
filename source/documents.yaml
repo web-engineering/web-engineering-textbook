@@ -1,67 +1,5 @@
 -
-  name: Ruby on Rails 1
-  documents:
-    -
-      name: Ruby Commandline
-      url: ruby_commandline.html
-      description: The essential ruby you need to know to understand rails
-    -
-      name: Rails Database and Models
-      url: rails_database_and_model.html
-      description: How does Rails use the database? How are models and database tables related?
-    -
-      name: Rails View and Controller
-      url: rails_view_and_controller.html
-      description: 
-    -
-      name: Authentication from Scratch
-      url: authentication_from_scratch.html
-      description: 
-    -
-      name: Authentication with Devise
-      url: authentication_with_devise.html
-      description: 
-    -
-      name: Asset Pipeline
-      url: asset_pipeline.html
-      description:
-    -
-      name: Testing and Refactoring
-      url: testing_and_refactoring.html
-      description:
-    -
-      name: Deploying Rails with Capistrano
-      url: deploying_rails.html
-      description:
-    -
-      name: Ruby Gems for your Rails Project
-      url: rails_gems.html
-      description:
--
-  name: Ruby on Rails 2
-  documents:
-    -
-      name: Advanced Rails Models
-      url: rails_advanced_models.html
-      description: Learn about inheritance and how to implement it in rails
-    -
-      name: Testing with RSpec
-      url: testing_with_rspec.html
-      description: A different way to write tests
-    -
-      name: Advanced testing
-      url: advanced_testing.html
-      description: More testing with test doubles and a headless browser
-    -
-      name: Internationalization (I18n)
-      url: internationalization.html
-      description: How to prepare you app for many languages, many countries
-    -
-      name: Security
-      url: security.html
-      description: How Rails helps with security, and how to mess it up
--
-  name: Git
+  name: Workflows
   documents:
     -
       name: Git Basics
@@ -75,9 +13,6 @@
       name: Teamwork
       url: git_teamwork.html
       description: When two programmers work at one computer this is called "pair programming".  
--
-  name: Software Process
-  documents:
     -
       name: Good Practices
       url: good_practices.html
@@ -87,6 +22,25 @@
       url: agile.html
       description: 
     -
-      name: Refactoring Rails
-      url: refactoring_rails.html
-      description: Some examples from real students projects
+      name: Testing and Refactoring
+      url: testing_and_refactoring.html
+      description:
+    -
+      name: Advanced testing
+      url: advanced_testing.html
+      description: More testing with test doubles and a headless browser
+    -
+      name: Deploying Rails with Capistrano
+      url: deploying_rails.html
+      description:
+-
+  name: Web Operations
+  documents:
+    - 
+      name: Webserver
+      url: webserver.html
+      description: Webserver
+    -
+      name: Security
+      url: security.html
+      description: How your web framework helps with security, and how to mess it up
