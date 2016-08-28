@@ -2,6 +2,10 @@
   name: Workflows
   documents:
     -
+      name: Using Public Key Cryptography
+      url: public_key.html
+      description: 
+    -
       name: Git Basics
       url: git_basics.html
       description: With branches you can work on two separate versions of your code in parallel. For example you can work on a new feature, but go back and fix an error in production in the middle of it. Git will help you keep your code sorted.
@@ -29,10 +33,6 @@
       name: Advanced testing
       url: advanced_testing.html
       description: More testing with test doubles and a headless browser
-    -
-      name: Deploying Rails with Capistrano
-      url: deploying_rails.html
-      description:
 -
   name: Web Operations
   documents:
