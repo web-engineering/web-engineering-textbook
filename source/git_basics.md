@@ -58,7 +58,8 @@ small projects:
 
 1. The whole history of the project always accessible, you can "go back in time" to old versions of your code.
 2. You can try out experimental stuff without danger of breaking your existing code.  
-3. it's absolutely vital for teamwork - several people can program on separate computers, the system helps with merging the differnet codes
+
+And it's absolutely vital for teamwork - several people can develop on separate machines. The system helps with merging the differnet programs into one.
 
 ### Why use git?
 
@@ -72,7 +73,7 @@ See [this video of a talk by him](http://www.youtube.com/watch?v=4XpnKHJAok8).
 Git is a **distributed vcs** - it does not depend on one central repository, every
 repository is created equal. You  can transfer code in "both directions".
 You can work online and offline. Its architecture is not fixed: if one server
-breaks down, you can move to new server without any trouble.
+breaks down, you can move to a new server without any trouble.
 
 Branching and merging is easy in git.
 
@@ -88,17 +89,17 @@ Github.com is a commercial hoster for git repositories.
 Their web interface adds a lot of convenient features to git.
 
 1. it's free for open source projects and used by many such projects
-2. with forking + pull requests it offers an easy way to contribute to open soruce projects
-3. it's mascopt is cute: octocat 
+2. with forking + pull requests it offers an easy way to contribute to open source projects
+3. it's mascot is cute: octocat 
 
 ![octocat](images/octocat.png)
 
 ### Resources for Learning Git
 
-* [try git](http://try.github.com)
-* [http://git-scm.com/documentation](http://git-scm.com/documentation)
-* [http://progit.org/book/](http://progit.org/book/)
-* [http://help.github.com/](http://help.github.com/)
+* [try git](https://try.github.io)
+* [https://git-scm.com/documentation](documentation)
+* [https://git-scm.com/book/en/v2](git book)
+* [https://help.github.com/](help.github.com/)
 * Loelinger(2009): Version Control with Git. O'Reilly Media.
 * Swicegood(2009): Pragmatic Version Control Using Git. Pragmatic Bookshelf.
 
@@ -155,23 +156,12 @@ git init
 
 If you are working on windows but collaborating
 with developers on other systems you might want to
+configure which line endings and which external editor is used.
 change the following setting:
 
 ``` sh
 core.autocrlf false
 core.editor "C:/Programme/Notepad++/Notepad++.exe"
-```
-
-If you ever find yourself annoyed by typing in long git
-commands you can define aliases:
-
-``` sh
-git config --global alias.co checkout
-
-# you now can use
-git co master
-# instead of
-git checkout master
 ```
 
 ### Plain git Workflow
@@ -372,4 +362,4 @@ But if you want to work in a team you will need to handle branches.
 
 ### Resources 
 
-[Git Book: Chapter 2](http://git-scm.com/book/en/Git-Basics)
+[Git Book: Chapter 2](https://git-scm.com/book/en/v1/Git-Basics)

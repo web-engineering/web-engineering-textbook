@@ -12,8 +12,8 @@ After reading this guide, you will know:
 
 ----------------------------------------------------------------
 
-Branching and Merging
----------------------
+Branching 
+---------
 
 When you create a branch in the repository you enable two
 different development directions.  later on you might want to
@@ -24,7 +24,7 @@ here a screenshot from SourceTree:
 
 ![SourceTree branches](images/source-tree-branches.png)
 
-### Branching
+### Create a branch
 
 To create or delete a branch use the `branch` command:
 
@@ -98,6 +98,14 @@ $ git checkout iss53
 ![worked on both branches](images/branch-and-merge-3.svg)
 
 ![what do I want to merge?](images/branch-and-merge-4.svg)
+
+
+Merging
+-------
+
+So development has gone in two different directions in two branches.
+How do we get it together again? 
+
 
 ### merge!
 
