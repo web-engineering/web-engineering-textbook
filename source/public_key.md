@@ -11,28 +11,43 @@ After working through this guide you should be able to
 
 -------------------------------------------------------------
 
-Public Key Authentication in SSH
+Public Key Cryptography
 ---------------------
 
-(See also [Railsbridge Installfest](http://installfest.railsbridge.org/installfest/create_an_ssh_key))
+In the 1970ies several cryptographers invented public-key cryptography independently
+of each other.  With the low computing power available then it could not be used in practice.
+Since the 1990 it is used widely in ssh, e-mail encryption and SSL/TLS.
 
+The basic idea is to have an assymetric encryption system: two different keys
+are used:  a public key for encryption and a private key for decryption
 
 ![public key login](images/public_key_crypto.svg)
 
-* [learn about ssh](http://dougvitale.wordpress.com/2012/02/20/ssh-the-secure-shell/)
-* if you have a public + private key pair
+
+We will be using public key cryptography for ssh and git.  For these
+systems the keys are stored in a folder **.ssh**:
+
+* you have a public + private key pair
   * `id_rsa`
   * `id_rsa.pub`
-* and your private key is on your local computer
-  * stored in `~/.ssh/id_rsa`
-* and your public key is on the server
-  * stored in `~/.ssh/authorized_keys2`
-* then ssh will let you log in without giving a password
+* your private key is stored on your local computer
+  * in `~/.ssh/id_rsa`
+* your public key is also stored on your local coputer
+  * in `~/.ssh/id_rsa`
+
+
+If you want to use these keys for logging in to a server without
+using a password, you have to copy over your public key to the server:
+
+* on the server your public key is stored
+  * in `~/.ssh/authorized_keys2`
+
+Then ssh will let you log in without giving a password
 
 ![public key login](images/ssh_login_with_public_key.svg)
 
 
-### authorized_keys2
+The authorized_keys file can contain several public keys:
 
 ```
 ssh-rsa AAAAB3NzaC...2EAAAABI== alice@fh-salzburg.ac.at
@@ -40,3 +55,57 @@ ssh-rsa AAAAB8NzaC...DVj3R4Ww== bob@fh-salzburg.ac.at
 ```
 
 
+Generating and using keys for git and github
+-----------------
+
+Decide which e-mail address you want to use - this address
+will be your identity as a developer from now on.  (so maybe don't use
+a really private one)
+
+Type this in the terminal (with your own e-mail address:)
+
+```
+ssh-keygen -C exampleme@example.com -t rsa
+```
+
+Press enter to accept the default key save location.
+Do not use a passphrase.
+
+After key generation is complete, you'll have output that looks like this:
+
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/student/.ssh/id_rsa):
+Created directory '/Users/student/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/student/.ssh/id_rsa.
+Your public key has been saved in /Users/student/.ssh/id_rsa.pub.
+The key fingerprint is:
+88:54:ab:11:fe:5a:c3:7s:14:37:28:8c:1d:ef:2a:8d exampleme@example.com
+```
+
+
+Now check if your two keys are really stored in `~/.ssh/id_rsa` and ` ~/.ssh/id_rsa.pub`!
+
+
+## Use your public key on github
+
+[Generate an account on github](https://github.com/join). Chose a username that is not embarassing (not now, and not
+in 3 years when you are a professional developer).  You can chose a Synonyme instead
+of using your real name if you are not sure yet if you want to be identified on the interent.
+
+
+No you can [add your public key to your github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
+
+
+
+
+
+
+
+
+See Also
+------
+* [creating an ssh key](http://installfest.railsbridge.org/installfest/create_an_ssh_key) as explained by railsbridge
+* [learn about ssh](http://dougvitale.wordpress.com/2012/02/20/ssh-the-secure-shell/)
