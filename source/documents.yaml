@@ -29,13 +29,13 @@
   name: Basics
   documents:
     -
-      name: Git Basics
-      url: git_basics.html
-      description: First Steps in git
-    -
       name: Using Public Key Cryptography
       url: public_key.html
       description: 
+    -
+      name: Git Basics
+      url: git_basics.html
+      description: First Steps in git
 -
   name: Web Operations
   documents:

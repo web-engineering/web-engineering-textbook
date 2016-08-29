@@ -24,39 +24,20 @@ are used:  a public key for encryption and a private key for decryption
 ![public key login](images/public_key_crypto.svg)
 
 
+ssh
+----
+
 We will be using public key cryptography for ssh and git.  For these
-systems the keys are stored in a folder **.ssh**:
+systems the keys are stored in a folder **.ssh**.
 
-* you have a public + private key pair
-  * `id_rsa`
-  * `id_rsa.pub`
-* your private key is stored on your local computer
-  * in `~/.ssh/id_rsa`
-* your public key is also stored on your local coputer
-  * in `~/.ssh/id_rsa`
+you have a public + private key pair
 
+* `id_rsa` - your private key is stored on your local computer in `~/.ssh/id_rsa`
+* `id_rsa.pub` - your public key is also stored on your local computer in `~/.ssh/id_rsa`
 
-If you want to use these keys for logging in to a server without
-using a password, you have to copy over your public key to the server:
+But how do you get those keys?
 
-* on the server your public key is stored
-  * in `~/.ssh/authorized_keys2`
-
-Then ssh will let you log in without giving a password
-
-![public key login](images/ssh_login_with_public_key.svg)
-
-
-The authorized_keys file can contain several public keys:
-
-```
-ssh-rsa AAAAB3NzaC...2EAAAABI== alice@fh-salzburg.ac.at
-ssh-rsa AAAAB8NzaC...DVj3R4Ww== bob@fh-salzburg.ac.at
-```
-
-
-Generating and using keys for git and github
------------------
+### Generating keys 
 
 Decide which e-mail address you want to use - this address
 will be your identity as a developer from now on.  (so maybe don't use
@@ -88,18 +69,52 @@ The key fingerprint is:
 
 Now check if your two keys are really stored in `~/.ssh/id_rsa` and ` ~/.ssh/id_rsa.pub`!
 
+### Using keys with ssh
 
-## Use your public key on github
+If you want to use these keys for logging in to a server without
+using a password, you have to copy over your public key to the server.
 
-[Generate an account on github](https://github.com/join). Chose a username that is not embarassing (not now, and not
-in 3 years when you are a professional developer).  You can chose a Synonyme instead
+On the server your public key must be stored in `~/.ssh/authorized_keys2`,
+then ssh will let you log in without giving a password
+
+![public key login](images/ssh_login_with_public_key.svg)
+
+The authorized_keys file can contain several public keys:
+
+```
+ssh-rsa AAAAB3NzaC...2EAAAABI== alice@fh-salzburg.ac.at
+ssh-rsa AAAAB8NzaC...DVj3R4Ww== bob@fh-salzburg.ac.at
+```
+
+
+git 
+-----------------
+
+Git uses two different transport modes: http and ssh.
+
+To upload (push) data to remote repository you should use ssh,
+and this is where you need your key pair.
+
+You need to tell your remote git repository about your
+public key.  This works slightly differently for different servers:
+
+### Useing keys with github
+
+[Generate an account on github](https://github.com/join). Chose a username that is not embarassing (not now, and not in 3 years when you are a professional developer).  You can chose a synonym instead
 of using your real name if you are not sure yet if you want to be identified on the interent.
 
-
-No you can [add your public key to your github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
-
+Now you can [add your public key to your github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
 
 
+### Useing keys on gitlab
+
+Under **Profile settings** &rarrow; **SSH Keys** you can add your public key.
+
+
+### remember to use ssh!
+
+When you clone a remote repository remember to use the address that starts with `git@`, not
+an address that starts with `http` !
 
 
 
