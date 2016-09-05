@@ -176,6 +176,14 @@ index.html: needs merge
 * git add FILE
 * git commit
 
+Git Flow
+---------
+
+
+git flow is a specific way of using branches:
+
+[github flow](https://guides.github.com/introduction/flow/)
+
 ### Resources 
 
 * [Git Book: Chapter 3.2](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
