@@ -12,15 +12,15 @@ After reading this guide, you will know:
 
 ----------------------------------------------------------------
 
-Branching 
+How to Branch
 ---------
 
 When you create a branch in the repository you enable two
-different development directions.  later on you might want to
+different development directions.  Later on you might want to
 merge the branches again, or you might want to discard one.
 
-Different tools offer visual displays of these branches,
-here a screenshot from SourceTree:
+Some tools offer visual displays of these branches.
+Here is a screenshot from SourceTree:
 
 ![SourceTree branches](images/source-tree-branches.png)
 
@@ -40,7 +40,9 @@ git branch BRANCH_NAME
 git branch -d BRANCH_NAME
 ```
 
-Creating and deleting branches in itself doesn't not do anything.
+Creating and deleting branches in itself doesn not do anything to 
+your file, and does not change which branch you are on.
+
 To actually use a branch you have to check it out:
 
 ``` sh
@@ -61,13 +63,21 @@ files in your filesystem change!
 Only checkout another branch when your working directory is clean,
 after you have commited all changes!
 
-### Behind the scene of a branch
+Behind the scenes
+---------
 
-before we branch
+Git keeps track of all the commits. A branch is
+a pointer to a certain commit.  To begin with you
+only have  a master branch, and it points to the most recent commit,
+in this figure that is c2:
 
 ![no branches yet](images/branch-and-merge-0.svg)
 
 ### create a new branch 
+
+A new branch just points to the same commit as the current branch.
+In this figure the new branch iss53 (probably created to fix issue 53)
+also points to commit c2:
 
 ``` sh
 $git checkout -b iss53
@@ -75,39 +85,37 @@ $git checkout -b iss53
 
 ![no branches yet](images/branch-and-merge-1.svg) 
 
-### switch to a branch
-
-``` sh
-$git checkout iss53
-```
-
-### which branch am I on?
+With `git checkout` you can switch to a different branch - 
+this will not change the branches in any way:
 
 ![git branch](images/git-branch.png)
 
-### work
+### work on two different branches
 
-``` sh
-# edit; commit(c3)
-$ git checkout master 
-# edit; commit(c4)
-$ git checkout iss53
-# edit; commit(c5)
-```
-
-![worked on both branches](images/branch-and-merge-3.svg)
+When you continue to work in your project,
+and you make new commits to the master branch and the
+iss53 branch you may end up in a situation like
+in this figure:
 
 ![what do I want to merge?](images/branch-and-merge-4.svg)
 
+Now the content of the two branches is different,
+when switching to another branch with `git checkout` you will
+see the files in your working copy change.
 
 Merging
 -------
 
-So development has gone in two different directions in two branches.
-How do we get it together again? 
+The process of combining branches again is called merging.
+Git will try to do this automatically, and in many cases this
+is not a problem.  For example if the two branches changed
+different files.
 
+This is the process: you should be on the branch that you
+want to continue using, in the example below this is `master`.
+Then you issue the command to merge in the other branch.
+If all goes well the output will look like this:
 
-### merge!
 
 ``` sh
 $ git checkout master
@@ -117,41 +125,40 @@ Merge made by recursive.
  1 files changed, 1 insertions(+), 0 deletions(-)
 ```
 
-### done
+After the successfull merge the current branch (`master`)
+contains all the changes from both branches. The other branch
+is still unchanged:
+
 ![after the merge](images/branch-and-merge-5.svg)
 
-### delete branch
+You probably do not need the other branch any more and can delete it:
+
 ``` sh
 git branch -d iss53
 ```
 
-
-### Merging in detail
-
-``` sh
-git merge OTHER_BRANCH
-```
-
-merge the OTHER_BRANCH into the current (checked-out) branch
-
 ### Conflicts
 
-* when both branches contain changes for the same file
-* or: trying two pushes containing changes for the same file
+Merging is not always so easy.  When both branches contain changes for the same file
+git might not be able to merge them automatically. Then the repository
+will be left in an "unmerged" state:
 
 ``` sh
 $ git status
 index.html: needs merge
 # On branch master
 # Changed but not updated:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
 #
 #   unmerged:   index.html
 #
 ```
 
-### conflict markers in a file
+The "unmerged" files will contain "conflict markers" to 
+indicate where git tried to merge but failed.  Here a developer
+is needed to look at the code and decide which version to keep,
+or how to combine the two versions.
+
+Here an example of an "unmerged" html file:
 
 ``` html
 </div>
@@ -166,15 +173,33 @@ index.html: needs merge
 </html>
 ```
 
-### conflict markers in a files
+If you use an editor with appropriate syntax highlighting
+this might be easier to read:
 
 ![conflict marker with syntax highlighting](images/conflict-markers.png)
-### how to resolve
-* for all files:
-* edit file
-* try out your changes!
-* git add FILE
-* git commit
+
+
+Before deciding how to edit this
+you probably also need to look at other files too
+- in this example at the CSS files
+to find out if the tag footer or the id footer is used.
+
+
+### how to resolve a conflict
+
+For every file that is marked as "umerged", you need
+to edit the file, check if the program still works (run tests?)
+and finally: **add** the file again.
+
+After treating all the file write a commit message that
+starts with "MERGE:".
+
+
+``` sh
+git add index.html
+git commit -m 'MERGE: consolidated changes in the footer, using footer-tag from now on'
+```
+
 
 Git Flow
 ---------
