@@ -16,7 +16,7 @@ Public Key Cryptography
 
 In the 1970ies several cryptographers invented public-key cryptography independently
 of each other.  With the low computing power available then it could not be used in practice.
-Since the 1990 it is used widely in ssh, e-mail encryption and SSL/TLS.
+Since the 1990ies it is used widely in ssh, e-mail encryption and SSL/TLS.
 
 The basic idea is to have an assymetric encryption system: two different keys
 are used:  a public key for encryption and a private key for decryption
@@ -24,18 +24,27 @@ are used:  a public key for encryption and a private key for decryption
 ![public key login](images/public_key_crypto.svg)
 
 
+This system has some important consequences: Only Alice can ever read the encrypted message.
+If you want to send encrypted messages to three people, you need three different
+public key for encryption.
+
+Alice needs to keep here private key private, but can publish her public key
+anywhere: on the web, in an e-mail signature, on her business card.
+
+
 ssh
 ----
 
 We will be using public key cryptography for ssh and git.  For these
-systems the keys are stored in a folder **.ssh**.
+systems the keys are stored in a folder **.ssh** in your home directory.
 
-you have a public + private key pair
+* `id_rsa` - your private key is stored in `~/.ssh/id_rsa`
+* `id_rsa.pub` - your public key is also in `~/.ssh/id_rsa`
 
-* `id_rsa` - your private key is stored on your local computer in `~/.ssh/id_rsa`
-* `id_rsa.pub` - your public key is also stored on your local computer in `~/.ssh/id_rsa`
+The directory `.ssh` can also contain two other important
+files: `config` and `authorized_keys`.
 
-But how do you get those keys?
+But first: how do you get a key pair?
 
 ### Generating keys 
 

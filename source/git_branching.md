@@ -26,12 +26,19 @@ Here is a screenshot from SourceTree:
 
 ### Create a branch
 
-To create or delete a branch use the `branch` command:
+To view, create or delete a branch use the `branch` command.
+The current branch will be marked with an asterisk (star):
 
 ``` sh
-git branch -v # shows branches + last commits
+# show branches 
+git branch 
+* master
+  iss50
+
+# show branches and last commits
+git branch -v 
 * master 7a98805 Merge branch 'iss49'
-  iss50  782fd34 add scott to the readme
+  iss50  782fd34 Fix bug in displaying formerrors
 
 # create a branch 
 git branch BRANCH_NAME
@@ -40,10 +47,12 @@ git branch BRANCH_NAME
 git branch -d BRANCH_NAME
 ```
 
-Creating and deleting branches in itself doesn not do anything to 
-your file, and does not change which branch you are on.
+Creating and deleting branches in itself does not do anything to 
+your files and does not change which branch you are on.
 
-To actually use a branch you have to check it out:
+One branch is always the current branch. You start out
+on the `master` branch and can switch to another branch
+by using `checkout`:
 
 ``` sh
 # switch to a different branch

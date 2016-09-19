@@ -33,7 +33,7 @@ In german they are most commonly called "Versionskontrollsystem".
 ### A short history of revision control
 
 When we look at open source revision control systems
-we find: Some ancient systems that are no longer in use:
+we find some ancient systems that are no longer in use:
 
 * RCS
 * CVS
@@ -45,11 +45,12 @@ and several systems that are still in use today:
 * Git
 
 SVN uses a central server. If you cannot reach this server
-for a longer time (e.g. because you are travelling)  then
-you cannot work with the system effectively.
+for a longer time (e.g. because you are travelling and offline)  then
+you cannot use the system.
 
 Both Mercurial and Git are distributed systems, they
-do not need a central server.
+do not need a central server. You can use the full system on
+your own machine while offline.
 
 ### Why use revision control?
 
@@ -59,7 +60,7 @@ small projects:
 1. The whole history of the project always accessible, you can "go back in time" to old versions of your code.
 2. You can try out experimental stuff without danger of breaking your existing code.  
 
-And it's absolutely vital for teamwork - several people can develop on separate machines. The system helps with merging the differnet programs into one.
+And it's absolutely vital for teamwork - several people can develop on separate machines. The system helps with merging the differet programs into one.
 
 ### Why use git?
 
@@ -83,25 +84,21 @@ it's stored in one directory: `.git`.
 All the code you check in is identified by SHA1. You cannot change the
 content of a commit after it has been made without the hash breaking!
 
-### Why use github.com?
+### gitlab and github.com#
+
+Gitlab is an open source project that adds a web frontend to
+git repositories.  It is often used in companies and universities
+to host git repositories internally.  (At Salzburg University of Applied Science
+we use it at [git.mediacube.at](https://git.mediacube.at).
 
 Github.com is a commercial hoster for git repositories.
-Their web interface adds a lot of convenient features to git.
+They also offer a web interface and add a lot of convenient features to git.
+It's free for open source projects and used by many such projects. You can
+also host your code for free if you opensource it (even if noone else ever uses it).
 
-1. it's free for open source projects and used by many such projects
-2. with forking + pull requests it offers an easy way to contribute to open source projects
-3. it's mascot is cute: octocat 
+Githubs mascot is the octocat:
 
 ![octocat](images/octocat.png)
-
-### Resources for Learning Git
-
-* [try git](https://try.github.io)
-* [https://git-scm.com/documentation](documentation)
-* [https://git-scm.com/book/en/v2](git book)
-* [https://help.github.com/](help.github.com/)
-* Loelinger(2009): Version Control with Git. O'Reilly Media.
-* Swicegood(2009): Pragmatic Version Control Using Git. Pragmatic Bookshelf.
 
 
 Git Basics 
@@ -362,4 +359,10 @@ But if you want to work in a team you will need to handle branches.
 
 ### Resources 
 
-[Git Book: Chapter 2](https://git-scm.com/book/en/v1/Git-Basics)
+* [try git](https://try.github.io)
+* [https://git-scm.com/documentation](documentation)
+* [https://git-scm.com/book/en/v2](git book)
+* [https://help.github.com/](help.github.com/)
+* Loelinger(2009): Version Control with Git. O'Reilly Media.
+* Swicegood(2009): Pragmatic Version Control Using Git. Pragmatic Bookshelf.
+
