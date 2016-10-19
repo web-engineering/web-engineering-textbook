@@ -2,6 +2,10 @@
   name: Basics
   documents:
     -
+      name: vi
+      url: vi.html
+      description: the editor vi, and how to get out of it
+    -
       name: Using Public Key Cryptography
       url: public_key.html
       description: 

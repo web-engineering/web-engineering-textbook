@@ -29,13 +29,16 @@ in your source code or link to your code after compiling.
 These dependencies are called libraries, packages or gems in different
 programming languges.
 
-We will discuss four different systems in parallell:
+We will discuss five different systems:
 
 * `apt` a package manager for Linux (used in debian, ubuntu, and several other distributions)
 * `brew` a package manager for mac os
 * `gem` and `bundler` for ruby
 * `npm` for javascript and node.js
 * `composer` for php
+
+
+
 
 We will be using `imagemagick` as an example. It is an image
 manipulation software originally written in c.
