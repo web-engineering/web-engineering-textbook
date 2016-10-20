@@ -33,6 +33,10 @@
       url: dependencies.html
       description:
     -
+      name: Managing Dependencies in Ruby
+      url: dep-ruby.html
+      description:
+    -
       name: Advanced testing
       url: advanced_testing.html
       description: More testing with test doubles and a headless browser

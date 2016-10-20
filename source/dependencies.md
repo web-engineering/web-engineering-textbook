@@ -39,6 +39,9 @@ We will discuss five different systems:
 * `npm` for javascript and node.js
 * `composer` for php
 
+
+### dynamiclly linked libraries
+
 Why do we need to look at `apt` and `brew`?  Isn't the
 package manager for my main programing language enough?
 
@@ -46,64 +49,19 @@ In many cases using php-only or ruby-only libraries will be enough.
 But sometimes the libraries we use in our dynamic languages use
 other code originally written in c or c++.
 
-The image processing library `imagemagick` and the encryption and network library
-`openssl` are two good examples.  If you want to use the ruby gem [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4) to edit images you will find that to install
-the gem, you first need to install the program+library "ImageMagick" (using apt or brew).
+The image processing library `imagemagick` is a good example.  If you want to use the ruby gem [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4) to edit images you will find that to install
+the gem, you first need to install the program and the library "ImageMagick".
+You do this using apt or brew or
+[the windows installer with dynamic link libraries](http://www.imagemagick.org/script/binary-releases.php#windows).
+
+The result of installing imagemagick with brew is the file `libMagickCore-6.Q16.2.dylib` and two other libraries.  These are libraries that can be used by multiple programs on your computer when they are dynamically linked to those programs.
+
+When installing the ruby gem with `gem install rmagick` you get the following output:
+
+    Building native extensions.  This could take a while...
 
 
-
-### How to install
-
-* `apt-get install imagemagick`
-* `brew install imagemagick`
-* `gem install rmagick`
-* `npm install imagemagick`
-* `composer install imagemagick`
-
-
-### Where is the code installed?
-
-* `apt` and the packages it uses conform to the linux file standard conventions. You can find out where it put the files by issuing dpkg -L imagemagick
-* `brew` installs in just one location:  `/usr/local/Cellar/`.  You can find out where it put the files by issuing `brew list imagemagic`. brew created a folder structure with the package name and the version number: /usr/local/Cellar/imagemagick/6.9.4-1_1/  and added several subfolders (lib/, etc/, ....)
-* `gem` creates a folder that combines package name and version number rmagick-2.15.4/ to install the package
-* `composer`...
-* `npm` install the package inside your project, in a folder called `node_packages`
-
-We will look at ruby and its gems as a first example of how to
-use dependencies.  
-
-### ruby and gems
-
-`rubygems` is the package manager for ruby,
-it let's you install gems on your system.
-
-A gem has a name  (e.g. `rake`) and a version number (e.g. `10.4.2`).
-It can be written in plain ruby or sometimes in ruby and c.  Many gems
-depend on system libraries that need to be installed before the gem can
-be installed.  For example the [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4)
-gem for image manipulation needs the library `ImageMagick`.
-
-So most of the time installing a gem is as simple as
-
-```bash
-> gem install rails_best_practices
-Successfully installed rails_best_practices-1.15.7
-Parsing documentation for rails_best_practices-1.15.7
-Installing ri documentation for rails_best_practices-1.15.7
-Done installing documentation for rails_best_practices after 2 seconds
-1 gem installed
-```
-
-But sometimes you have to do other installations first. 
-On your development machine this might look like this:
-
-```bash
-# install node on a mac
-> brew install nodejs
-> gem install uglifier
-```
-
-Sometimes you need to set include paths when compiling the c-part of the gem, e.g.:
+Sometimes you need to set include paths when installing gem, e.g.:
 
 ```bash
 > gem install eventmachine 
@@ -116,29 +74,44 @@ In file included from binder.cpp:20:
 > gem install eventmachine -- --with-cppflags=-I/usr/local/opt/openssl/include
 ```
 
-In production you probably have to deal with Linux, and you
-may not have the right permissions to install system libraries.
-A typical example would be:
 
-``` shell
-$dev> ssh my.production.machine
-$production> sudo apt-get install libmagick++-dev
-$production> gem install rmagick
-$production> gem install paperclip
-```
+### package names and a central database
 
-Now that you have installed the gem once by hand
-you can be sure that it can also be reinstalled by bundler.
+To enable easy installation of a dependency with just one command we need
+a central database that contains the information on all available packages.
+These databases typically also offer a web page with search functionality:
 
-See also:
+* [rubygems.org](https://rubygems.org/) for ruby
+* [npmjs.com](https://www.npmjs.com/) for javascript
+* [packagist.org](https://packagist.org/) for php and composer
+* [homebrew/core](https://github.com/Homebrew/homebrew-core) is a repository on github, but other "taps" (sources of packges) can be added
+* [apt](http://de.archive.ubuntu.com/ubuntu) packages are kept on ftp servers and are not searchable there. other sources can be added to `/etc/apt/sources.list`
 
-* [what is a gem](http://docs.rubygems.org/read/chapter/24)
-* find 100.000 gems at [rubygems.org](http://rubygems.org/)
+Package names need to be unique.  Version numbers are often given out according to [semantic versioning](http://semver.org/).
 
-### dependency hell
 
-For a big web project you will be using a lot of gems. This will lead
-to two problems:
+### How to install
+
+* `apt-get install imagemagick`
+* `brew install imagemagick`
+* `gem install rmagick`
+* `npm install imagemagick`
+* `composer install imagemagick`  - does not work, needs PECL 
+
+
+### Where is the code installed?
+
+All the package managers distinguish between installing **globally** - for all users and projects on a computer and installing **locally**.  This might mean installing in a way that only one user can use, or it might mean installing into a projects directory.
+
+When you deploy your project to a production server you again face this question: should
+the dependencies be installed globally or locally?
+
+Dependency Hell
+---------------
+
+
+For a big web project you will be using a lot of dependencies. This will lead
+to two problems (here shown in a ruby projects with gems):
 
 1. dependency resolution: gem A depends on version 1.1 of gem C, while gem B wants at least version 1.5.  You need to find the right version of every gem in your project that actually fits together
 2. different installation: when deploying to a production server, or even just when sharing code with other developers you need to make sure that the same constellation of gems and versions is used on every machine
@@ -146,11 +119,11 @@ to two problems:
 If this all goes horribly wrong you are in "dependency hell": you can't find the right versions
 of gems to make your code work again on a new machine or after an update.
 
-### bundler saves us
+### Escape from Depencency Hell
 
 ![bundler](images/bundler-small.png)
 
-Bundler is the name of the tool that saves us from dependency hell.
+Bundler is the name of the ruby tool that solves this problem for ruby.
 Bundler is itself a gem, so you install it with `gem install bundler`.
 Beware: the command you will be using called `bundle`, not bundler.
 
@@ -164,20 +137,27 @@ When you run `bundle install` bundler will:
 * write `Gemfile.lock`
 
 The lock-file contains a complete list of all the gems necessary for
-your project, and their version numbers.  These are now locked down,
-and will not change!
+your project, and their version numbers.  This also includes dependencies of you
+dependencies, that you don't even knew you were using!
+The version numbers are now locked down, and will not change!
 
 When deploying to a new development machine or the production server, 
 you run `bundle install` and the exact same versions are now installed.
 
+All modern package managment systems offer a form of this solution, with
 
-### defining versions
+* on file that is written by hand that contains your **wishes** 
+* another file that is created by the package manager, that contains the exact version numbers
 
-In the Gemfile you can specify which versions should be used.
-But don't overdo it!  Bundler does a good job picking versions,
-if you specify every version number by hand you are doing too much work.
 
-Some examples of the different ways of specifying version number and source:
+### Defining Versions
+
+When definig your wishes for dependencies you can specify which versions should be used.
+But don't overdo it!  The package manager does a good job picking versions.
+If you specify every version number by hand you are doing too much work. And you
+are potentially locking yourself in to old versions.
+
+Some examples of the different ways of specifying version number and source in a ruby `Gemfile`:
 
 ``` ruby
 # Gemfile
@@ -190,6 +170,7 @@ gem 'rails', '4.2.5'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 ```
+
 Giving an exact version number fixes that version, so only
 version 4.2.5 of rails will be allowed here.  Using the "greater-or-equal-than" sign
 you can require any version greater or equal to 1.3.0.  So 1.2.7 is forbidden,
@@ -199,5 +180,32 @@ The arrow `~>` will only allow an increase in the
 last (right most) number, so `~> 4.1.0` does allow `4.1.17` but not `4.2`.
 This is called a pessimistic version constraint, read more about 
 it in [the rubygem documentation](http://guides.rubygems.org/patterns/#pessimistic-version-constraint).
+
+
+### Keeping Up To Date
+
+Let's assume you list 12 dependencies in your project. This might result in 36 dependencies 
+being installed in all.  Now assume each dependency releases a new version once a year. You
+have to be prepared for updating several dependencies each month!
+
+To update the versions you need to override the lock-file and allow a change in version numbers.
+
+For each dependency system we discussed there are services out there that will tell
+you about new version or -- even more important -- new security updates for your dependencies.
+
+
+Dependency Managment in Detail
+-----------
+
+More detailled information on the five systems is available on separate pages:
+
+* `apt` a package manager for Linux (used in debian, ubuntu, and several other distributions)
+* `brew` a package manager for mac os
+* `gem` and `bundler` for ruby
+* `npm` for javascript and node.js
+* `composer` for php
+
+
+ 
 
 
