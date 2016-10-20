@@ -14,7 +14,7 @@ After reading this guide, you will be able to:
 
 ----------------------------------------------------------------
 
-What is vi?
+History
 ------------
 
 `vi` is a very, very old editor that is still used today.
@@ -81,9 +81,36 @@ to save the text to a file and **q** (quit) to exit the editor.
 ### ex
 
 The next step was the editor **ex** which brought a slight change
-in interface: 
+in interface: the input prompt is marked with a colon.
 
-### Resources 
+### vi
+
+With monitors came the next version of the editor: the visual editor *vi*.
+
+It now displays the content of the file (one screen at a time),
+and offers a cursor - it almost looks and works like a modern text editor.
+But *ed* and *ex* are still there, in the *normal mode* and *commandline* of vi.
+
+Vi Modes
+--------
+
+![vi modes](images/vi-modes.svg)
+
+Using *vi* you have to be aware which mode the editor is in. There
+are only subtle visual clues to help you.
+
+![vi modes](images/vi-recognize-modes.png)
+
+As you can see in the images above, insert mode is distinguished
+from normal mode by the showing `-- INSERT --` in the last line.
+Command-line mode puts the cursor in the last line, and shows the colon
+(that you typed in to get into command-line mode).
+
+
+
+
+Resources 
+----------
 
 * [vim adventures](https://vim-adventures.com)
 * [Text Editor ed](https://en.wikipedia.org/wiki/Ed_(text_editor)) in Wikipedia

@@ -8,11 +8,13 @@ It covers ruby, javascript and php.
 
 After working through this guide you will be able to:
 
+* understand what a package manager does for you
 * install packages for javascript and node with `npm`
 * install gems für ruby with `gem` and `bundler`
 * install libraries for php with `composer`
+* install programs and libraries for your mac with `brew`
+* install programs and libraries for your linux machine with `apt`
 * know how to keep your dependencies current
-* understand how these systems help you avoid "dependency hell"
 
 ---------------------------------------------------------------------------
 
@@ -22,12 +24,12 @@ Dependencies
 The program you write will depend on other code
 that other people have written. Some of this code
 has been packaged into operating systems or applications:
-Linux, Postgres, Apache, nginx, ... 
+Linux, Postgres, Apache, nginx, and so on.
 
 But you also use smaller pieces of code that you include
 in your source code or link to your code after compiling.
 These dependencies are called libraries, packages or gems in different
-programming languges.
+programming languages.
 
 We will discuss five different systems:
 
@@ -37,11 +39,18 @@ We will discuss five different systems:
 * `npm` for javascript and node.js
 * `composer` for php
 
+Why do we need to look at `apt` and `brew`?  Isn't the
+package manager for my main programing language enough?
+
+In many cases using php-only or ruby-only libraries will be enough.
+But sometimes the libraries we use in our dynamic languages use
+other code originally written in c or c++.
+
+The image processing library `imagemagick` and the encryption and network library
+`openssl` are two good examples.  If you want to use the ruby gem [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4) to edit images you will find that to install
+the gem, you first need to install the program+library "ImageMagick" (using apt or brew).
 
 
-
-We will be using `imagemagick` as an example. It is an image
-manipulation software originally written in c.
 
 ### How to install
 
