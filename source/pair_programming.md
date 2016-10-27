@@ -1,4 +1,4 @@
-Git Teamwork
+Pair Programming
 ============
 
 In this guide you will learn about a special form of teamwork
@@ -8,7 +8,6 @@ After reading this guide, you will:
 
 * Know why you should try pair programming
 * have a good starting point for your first try at pairing
-* be able to use git while pairing
 
 -------------------------------------------------------------------
 
@@ -36,11 +35,11 @@ We want the log to show who worked as a pair
 ``` sh
 $ git log
 commit 38d4f10fe2fb3f4d13e12d75e70bc0a085f0753f
-Author: Brigitte Jellinek + Mr. Hyde <xhyde.lba@fh-salzburg.ac.at>
+Author: Brigitte Jellinek + Xaviar Hyde <xhyde.lba@fh-salzburg.ac.at>
 Date:   Fri Sep 14 10:52:41 2012 +0200
 ```
 
-This semester we will use:
+This follows the pattern:
 
 ``` sh
 firstname lastname driver + firstname lastname navigator
@@ -50,21 +49,20 @@ e-mail address of the navigator
 
 ### git config
 
-see git config --help
+The configuration of git is saved on three levels:
+For the repository you can find the configuration in the file `.git/config`.
 
-* three Levels:
-* for a single repository ./.git/config
-* for one user ~/.gitconfig 
-* --global
-* for the whole system /etc/gitconfig 
-* --system
+You can set your own user-specific settings with the command line switch `--global`.
+They will be saved to `~/.gitconfig`.  
 
+And with the command line switch `--system` you can set global settings that
+will be saved to `/etc/gitconfig`
 
-### git config file
+This is what a `.git/config` file might look like:
 
 ``` 
 [user]
-    name = Brigitte Jellinek + Mr. Hyde
+    name = Brigitte Jellinek + Xaviar Hyde
     email = xhyde.lba@fh-salzburg.ac.at
 
 [core]
@@ -79,13 +77,3 @@ see git config --help
     fetch = +refs/heads/*:refs/remotes/origin/*
 ```
 
-### set the config 
-
-just in the current repository, just for now.
-
-``` sh
-git config --replace-all user.name "firstname lastname + firstname lastname"
-git config --replace-all user.email "navigator@gmail.com"
-```
-
-go do it!

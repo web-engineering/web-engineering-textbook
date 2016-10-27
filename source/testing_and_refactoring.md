@@ -1,68 +1,75 @@
 Testing and Refactoring
 =======================
 
-This guide will explain why you should write tests
-for your web application. It covers built-in mechanisms offered by Rails.
+This guide will explain why you should write automatic tests
+for your web application. 
 By referring to this guide, you will be able to:
 
-* Understand Rails testing terminology
+* Understand testing terminology
 * Write unit and integration tests for your application
+* Know what test driven development is
+* Know what refactoring is
 
 ---------------------------------------------------------------------------
 
-Why Test?
-----------
+Testing Software
+----------------
 
-* to know if the program works (as specified)
-* to know if it still works after refactoring
+There are two ways to test software:  have an actual person
+use the software or have a program automatically test the software.
+
+People who test software "by hand" often do this under the heading
+"Quality Assurance" or "QA".  See [jobs in Salzburg](http://www.karriere.at/jobs/software-quality-assurance-tester/salzburg)  or [jobs in Berlin](http://de.indeed.com/Software-Quality-Assurance-Jobs-in-Berlin).
+
+But even if you have a QA department for your project, as a developer
+you still will write automated tests too.
+
+
+### Why write automatic tests?
+
+There are many reasons why you would want to write test for your program:
+
+* when you first write the program: to know if the program works (as specified)
 * to know if it still works after adding a new feature
-* to know if it still works ...
+* to know if it still works after refactoring the code
+* to know if it still works after updating the dependencies
 
 
-### for beginners: two testing levels
+### Example test
 
-* unit testing - models
-* integration testing - like a browser
+This simple example in Javascript tests a function foo:
 
+    describe('foo function', function() {
+      
+      it('converts number 1 correctly', function() {
+        let input = { value: 1, language: english };
+        assert.equal(foo(input), 'one');
+      });
 
-### rails and testing
+    });
 
-* testing built in
-* scaffold creates (empty) tests
-* testing environment
-* run all tests with `rake:test`
-* run all tests with `rake test TESTOPTS="-v"`
+The test framework gives you the possibility to group your
+tests. In this example this is done with `describe` and `it`.
 
+This test of the function `foo` consists of:
 
+* a setup phase, where we prepare a data strucure we need later
+* the calling of the function foo with the prepared input
+* comparing the output of foo to the expected output
 
-### my first test
+For the last step often the word `assert`  or Assertion is used.
 
-``` ruby
-# in file test/unit/user_test.rb
-test "no_stars is zero in new user" do
-  u = User.create!(:first_name=>"John", :last_name=>"Doe")
-  assert u.no_stars == 0
-end
-```
+### Types of Tests
 
+As a beginner you should distinguish at least two types of tests:
 
-### my first integration test
+* unit test - tests the function of one unit (be it a class, a package, one model, one view....)
+* integration test - tests the whole program from the perspective of a user
 
-``` ruby
-test "users are displayed" do
-  u = User.create!(:first_name=>"Jane", :last_name=>"Doe")
-  visit "/users"
-  assert page.has_content?('Gib ein Sternchen!')
-  assert page.has_content?('Jane Doe')
-end
-```
-
-
-### see documentation
-
-* [Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html)
-* [Test::Unit Cheatsheet](http://topfunky.com/clients/rails/ruby_and_rails_assertions.pdf)
-* [Capybara Cheat Sheet](https://gist.github.com/3942267)
+Integration tests give you more valuable insights from a users
+perspective, e.g.: "the shopping cart checkout does not work".
+Unit tests help developers find the part of the program that is
+responsible for a problem: "the cookie store class is broken".
 
 
 Test Driven Development (TDD)
