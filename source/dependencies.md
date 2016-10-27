@@ -12,8 +12,7 @@ After working through this guide you will be able to:
 * install packages for javascript and node with `npm`
 * install gems für ruby with `gem` and `bundler`
 * install libraries for php with `composer`
-* install programs and libraries for your mac with `brew`
-* install programs and libraries for your linux machine with `apt`
+* install programs and libraries for your operating system with `brew`, `apt` or `choco`
 * know how to keep your dependencies current
 
 ---------------------------------------------------------------------------
@@ -31,18 +30,21 @@ in your source code or link to your code after compiling.
 These dependencies are called libraries, packages or gems in different
 programming languages.
 
-We will discuss five different systems:
+We will discuss six different systems:
 
-* `apt` a package manager for Linux (used in debian, ubuntu, and several other distributions)
-* `brew` a package manager for mac os
-* `gem` and `bundler` for ruby
-* `npm` for javascript and node.js
-* `composer` for php
+* Package management for the operating system:
+  * `apt` a package manager for Linux (used in debian, ubuntu, and several other distributions)
+  * `brew` a package manager for mac os
+  * `choco` a package manager for windows
+* Package management for a programming language:
+  * `gem` and `bundler` for ruby
+  * `npm` for javascript and node.js
+  * `composer` for php
 
 
 ### dynamiclly linked libraries
 
-Why do we need to look at `apt` and `brew`?  Isn't the
+Why do we need to look at `apt`, `brew` or `choco`?  Isn't the
 package manager for my main programing language enough?
 
 In many cases using php-only or ruby-only libraries will be enough.
@@ -81,12 +83,12 @@ To enable easy installation of a dependency with just one command we need
 a central database that contains the information on all available packages.
 These databases typically also offer a web page with search functionality:
 
+* [apt](http://de.archive.ubuntu.com/ubuntu) packages are kept on ftp servers and are not searchable there. other sources can be added to `/etc/apt/sources.list`
+* [homebrew/core](https://github.com/Homebrew/homebrew-core) is a repository on github, but other "taps" (sources of packges) can be added
+* choco
 * [rubygems.org](https://rubygems.org/) for ruby
 * [npmjs.com](https://www.npmjs.com/) for javascript
 * [packagist.org](https://packagist.org/) for php and composer
-* [homebrew/core](https://github.com/Homebrew/homebrew-core) is a repository on github, but other "taps" (sources of packges) can be added
-* [apt](http://de.archive.ubuntu.com/ubuntu) packages are kept on ftp servers and are not searchable there. other sources can be added to `/etc/apt/sources.list`
-
 Package names need to be unique.  Version numbers are often given out according to [semantic versioning](http://semver.org/).
 
 
@@ -94,6 +96,7 @@ Package names need to be unique.  Version numbers are often given out according 
 
 * `apt-get install imagemagick`
 * `brew install imagemagick`
+* `choco install imagemagick`
 * `gem install rmagick`
 * `npm install imagemagick`
 * `composer install imagemagick`  - does not work, needs PECL 
@@ -105,6 +108,19 @@ All the package managers distinguish between installing **globally** - for all u
 
 When you deploy your project to a production server you again face this question: should
 the dependencies be installed globally or locally?
+
+
+### Security considerations
+
+Downloading and using software is always dangerous. With a package
+management system a lot of downloads happen automatically.  So we want
+to make sure the software we download is really what it is supposed to be.
+
+A package management system can offer different methods of making it more secure:
+* comparing **checksums** of the code to  make sure the downloaded package contains the same code as the original package 
+* cryptographically **signing** the code in the package and checking this signature before installing. This ensures
+that only the original author of the package can release new versions.  
+
 
 Dependency Hell
 ---------------
@@ -194,18 +210,38 @@ For each dependency system we discussed there are services out there that will t
 you about new version or -- even more important -- new security updates for your dependencies.
 
 
-Dependency Managment in Detail
------------
+apt for Linux
+----------
 
-More detailled information on the five systems is available on separate pages:
 
-* `apt` a package manager for Linux (used in debian, ubuntu, and several other distributions)
-* `brew` a package manager for mac os
-* `gem` and `bundler` for ruby
-* `npm` for javascript and node.js
-* `composer` for php
+brew for mac os
+------------
+
+
+choco for windows
+------------
+
+gem and bundler for ruby
+---------
+
+npm for javascript and node.js
+----------
+
+
+composer and packagist for php
+-------
 
 
  
 
+References
+-----------
 
+* Package management for the operating system:
+  * `apt` for Linux, e.g. for [Ubuntu](https://help.ubuntu.com/lts/serverguide/apt.html) and [Debian](https://www.debian.org/doc/manuals/debian-reference/ch02.en.html)
+  * `brew` for mac os [brew.sh](http://brew.sh/)
+  * `choco` for windows [chocolatey.org](https://chocolatey.org/)
+* Package management for a programming language:
+  * `gem` and `bundler` for ruby [rubygems.org](http://guides.rubygems.org/rubygems-basics/) and [bundler.io](http://bundler.io/)
+  * `npm` for javascript and node.js [npmjs.org](https://www.npmjs.com/)
+  * `composer` for php [getcomposer.org](https://getcomposer.org/) and [packagist.org](https://packagist.org/)
