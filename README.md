@@ -1,7 +1,7 @@
 # Textbook 'Web Engineering'
 
 My Textbook on Web Engineering. Developed on github, published at
-http://web-engineering.github.com
+http://web-engineering.github.io
 
 This covers web workflows and web operations.
 See my other books:

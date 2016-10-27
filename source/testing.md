@@ -1,5 +1,5 @@
-Testing and Refactoring
-=======================
+Testing 
+=======
 
 This guide will explain why you should write automatic tests
 for your web application. 
@@ -7,8 +7,6 @@ By referring to this guide, you will be able to:
 
 * Understand testing terminology
 * Write unit and integration tests for your application
-* Know what test driven development is
-* Know what refactoring is
 
 ---------------------------------------------------------------------------
 
@@ -57,7 +55,43 @@ This test of the function `foo` consists of:
 * the calling of the function foo with the prepared input
 * comparing the output of foo to the expected output
 
-For the last step often the word `assert`  or Assertion is used.
+For the last step often the word `assert` or assertion is used.
+
+Here is a longer example in ruby:
+
+```ruby
+    describe Customer do
+
+      before do
+        @movie_1 = Movie.new("Iron Man 3", Movie::NEW_RELEASE)
+        @movie_2 = Movie.new("Avatar",     Movie::REGULAR)
+        @movie_3 = Movie.new("Brave",      Movie::CHILDRENS)
+        @customer = Customer.new("Vroni")
+      end
+
+      describe "customer statement" do
+        it "is printed correctly for a new release movie" do
+          # [...]
+        end
+        it "is summed up correctly for 3 movies" do
+          @customer.add_rental(Rental.new(@movie_1, 2))
+          @customer.add_rental(Rental.new(@movie_2, 3))
+          @customer.add_rental(Rental.new(@movie_3, 4))
+          @customer.statement.must_match /Amount owed is 12.5/
+          @customer.statement.must_match /You earned 4 frequent renter points/
+        end 
+      end
+    end
+```
+
+Here the setup phase has been extracted to a `before` block.
+This is run before every test inside the same `describe` block. 
+The means that the variable will be reset before each test,
+if you change `@movie_1` in the first test this will not affect
+the second test.
+
+In this example a more complex assertion is used: `must_match` will
+do a pattern match on the resulting string.
 
 ### Types of Tests
 
@@ -69,52 +103,5 @@ As a beginner you should distinguish at least two types of tests:
 Integration tests give you more valuable insights from a users
 perspective, e.g.: "the shopping cart checkout does not work".
 Unit tests help developers find the part of the program that is
-responsible for a problem: "the cookie store class is broken".
-
-
-Test Driven Development (TDD)
--------------------------------
-
-### what is "test first" ?
-
-1. write a test (it fails)
-2. write the implementation (test still fails)
-3. fix the implementation 
-4. test passes: you're done!
-
-
-### what is "TDD" ?
-
-1. Q: what should the program do? 
-2. A: integration test. (write it. it fails)
-3. Q: how should the program do it?
-4. A: unit test. (write it. it fails)
-5. implement the unit 
-6. does the unit test pass? if not, got back to 5
-7. does the integration test pass? if not, go back to 3
-
-
-Code Refactoring
-------------------
-
-
-### what is "code refactoring" ?
-
-* "restructuring an existing body of code
-* altering its internal structure
-* without changing its external behavior"
-* or for short:
-* change your code:
-* but only how you do it,
-* not what you do.
-
-
-### refactoring and testing
-
-
-* run the unit test (it should be green)
-* refactor
-* run the unit test (it should still be green)
-* done
-
+responsible for a problem: "the cookie store class breaks if you store an undefined value".
 
