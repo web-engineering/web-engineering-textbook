@@ -47,7 +47,3 @@
       name: Webserver
       url: webserver.html
       description: Webserver
-    -
-      name: Security
-      url: security.html
-      description: How your web framework helps with security, and how to mess it up

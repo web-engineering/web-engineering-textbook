@@ -210,6 +210,20 @@ For each dependency system we discussed there are services out there that will t
 you about new version or -- even more important -- new security updates for your dependencies.
 
 
+
+Dependencies = Risk
+------------------
+
+While using a third party library today will make you more
+productive, it could well harm you in the long wrong:
+
+* It might change drastically in the future, like Angular 2 did. See [Ceddias article on upgrading von Angular 1 to Angular 2](https://daveceddia.com/angular-2-should-you-upgrade/)
+* It might be discontinued and disappear completely, like Parse did. See [their final announcement](http://blog.parse.com/announcements/moving-on/)
+* It might disappear and be replaced, causing havoc in the meantime, like left_pad did. See [article in theregister on left_pad](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)
+
+These examples were taken from [a longer article](https://medium.freecodecamp.com/code-dependencies-are-the-devil-35ed28b556d#.4a7d59i6u) that discusses ways to minimize the risk.
+
+
 apt for Linux
 ----------
 

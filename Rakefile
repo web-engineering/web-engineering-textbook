@@ -1,7 +1,12 @@
+require 'rake/clean'
+
+CLEAN.include( 'output/*.html' )
+
 namespace :guides do
 
   desc 'Generate guides (for authors), use ONLY=foo to process just "foo.md"'
   task :generate => 'generate:html'
+
 
   namespace :generate do
 
@@ -9,6 +14,9 @@ namespace :guides do
     task :html do
       ENV["WARN_BROKEN_LINKS"] = "1" # authors can't disable this
       ruby "generate_book.rb"
+      FileList['source/*.html'].each do |source_file|
+        cp source_file, 'output/', :verbose => true
+      end
     end
 
     desc "Generate .mobi file. The kindlegen executable must be in your PATH. You can get it for free from http://www.amazon.com/kindlepublishing"
