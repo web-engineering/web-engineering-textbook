@@ -214,8 +214,8 @@ you about new version or -- even more important -- new security updates for your
 Dependencies = Risk
 ------------------
 
-While using a third party library today will make you more
-productive, it could well harm you in the long wrong:
+Using a third party library will make you more
+productive today. But it could well harm you in the long run:
 
 * It might change drastically in the future, like Angular 2 did. See [Ceddias article on upgrading von Angular 1 to Angular 2](https://daveceddia.com/angular-2-should-you-upgrade/)
 * It might be discontinued and disappear completely, like Parse did three years after it was [aquired by facebook](https://www.crunchbase.com/organization/parse#/entity). See [their final announcement](http://blog.parse.com/announcements/moving-on/)
@@ -226,6 +226,7 @@ These examples were taken from [a longer article](https://medium.freecodecamp.co
 
 apt for Linux
 ----------
+
 
 
 brew for mac os
