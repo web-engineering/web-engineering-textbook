@@ -223,29 +223,111 @@ productive today. But it could well harm you in the long run:
 
 These examples were taken from [a longer article](https://medium.freecodecamp.com/code-dependencies-are-the-devil-35ed28b556d#.4a7d59i6u) that discusses ways to minimize the risk.
 
+Quick Start Guides
+--------
 
-apt for Linux
-----------
+### apt for Linux
+
+The Advanced Package Tool, or APT, handles the installation and removal 
+of software on the Debian, Ubuntu and other Linux distributions. 
+It installs both complete programs (like apache in the example below)
+and libraries (like libssl in the example below) that can be used to build programs.
+
+```
+apt-get install apache2  
+apt-get install libssl-dev
+```
+
+The software is installed into the usual folder used in UNIX
+(see also the [Filesystem Hierarchy Standard (FHS)](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard):
+
+* `/etc` for configuration files
+* `/bin` and `/lib` for essential binaries and libraries
+* `/usr/bin` and `/usr/lib` for non-essential (=most) binaries and libraries
+
+You can find out what exactly got installed by running the `dpkg` command:
+
+```
+$ dpkg -L libmagickcore
+/.
+/usr
+/usr/lib
+/usr/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu/libMagickCore-6.Q16.so.2.0.0
+/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9
+/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/modules-Q16
+/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/modules-Q16/filters
+/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/modules-Q16/filters/analyze.so
+/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/modules-Q16/filters/analyze.la
+[...]
+```
+
+As apt installs many types of software, there are many ways to use this software:
+
+* command line tools: you just run them on the command line, like `wget http://io9.com`
+* daemons: you start and stop them with the service command, like `service apache2 start`
+* c libraries: include the header-file in your own c program, like `#include <PCSC/winscard.h>` and then link the library 
+* other libraries: depends on the programming language
 
 
 
-brew for mac os
-------------
+### brew for mac os
+
+Homebrew is a package manager for Mac OS.  It builds
+software from source, applying patches to make the software
+mac compatible.
+
+It installs both complete programs (like postgresql in the example below)
+and libraries (like libyaml in the example below) that can be used to build programs.
+
+```
+apt-get install apache2  
+apt-get install postgresql
+```
+
+Homebrew is a git repository in `/usr/local/Homebew`.  It installs
+software into `/usr/local/Cellar` and then creates links from 
+`/usr/local/bin` or `/usr/local/lib` as appropriate.
+
+You can find out what exactly got installed by running the `brew list` command:
+
+```
+$ brew list libyaml
+/usr/local/Cellar/libyaml/0.1.7/include/yaml.h
+/usr/local/Cellar/libyaml/0.1.7/lib/libyaml-0.2.dylib
+/usr/local/Cellar/libyaml/0.1.7/lib/pkgconfig/yaml-0.1.pc
+/usr/local/Cellar/libyaml/0.1.7/lib/ (2 other files)
+
+$ brew list postgresql
+/usr/local/Cellar/postgresql/9.5.4_1/bin/clusterdb
+/usr/local/Cellar/postgresql/9.5.4_1/bin/createdb
+[...]
+```
+
+The executable programs in the last example can
+be found as links in `/usr/local/bin/`  
+
+```
+lrwxr-xr-x  user  clusterdb -> ../Cellar/postgresql/9.5.4_1/bin/clusterdb
+lrwxr-xr-x  user  createdb -> ../Cellar/postgresql/9.5.4_1/bin/createdb
+```
+
+As brew installs many types of software, there are many ways to use this software:
+
+* command line tools: you just run them on the command line, like `wget http://io9.com`
+* daemons: you start and stop them with the service command, like `brew services start postgresql`
+* c libraries: include the header-file in your own c program, like `#include <yaml.h>` and then link the library 
+* other libraries: depends on the programming language
 
 
-choco for windows
-------------
+### choco for windows
 
-gem and bundler for ruby
----------
+### gem and bundler for ruby
 
-npm for javascript and node.js
-----------
+### npm for javascript and node.js
 
 
-composer and packagist for php
--------
-
+### composer and packagist for php
 
  
 
