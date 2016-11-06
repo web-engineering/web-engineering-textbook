@@ -234,8 +234,26 @@ It installs both complete programs (like apache in the example below)
 and libraries (like libssl in the example below) that can be used to build programs.
 
 ```
-apt-get install apache2  
-apt-get install libssl-dev
+apt install apache2  
+apt install libssl-dev
+```
+
+The software is downloaded from a file system (e.g. a DVD) or an FTP server.
+Each Linux distribution keeps their own server.
+You can search for software with `apt search`
+
+```
+$ apt search xml
+[...]
+xmlto/xenial 0.0.28-0.1 amd64
+  XML-to-any converter
+
+xmltoman/xenial,xenial 0.4-3 all
+  simple XML to man converter
+
+xmltooling-schemas/xenial,xenial 1.5.6-2 all
+  XML schemas for XMLTooling
+[...]
 ```
 
 The software is installed into the usual folder used in UNIX
@@ -281,8 +299,19 @@ It installs both complete programs (like postgresql in the example below)
 and libraries (like libyaml in the example below) that can be used to build programs.
 
 ```
-apt-get install apache2  
-apt-get install postgresql
+brew install postgresql  
+brew install libyaml
+```
+
+You can search for software with `brew search`:
+
+```
+$ brew search xml
+[...]
+homebrew/php/php54-wbxml               libxml++3 
+homebrew/php/php54-xmldiff             libxml2 ✔ 
+homebrew/php/php55-wbxml               libxmlsec1
+[...]
 ```
 
 Homebrew is a git repository in `/usr/local/Homebew`.  It installs
@@ -333,6 +362,19 @@ Libraries for ruby are called **gems**  and can be installed using the command l
 gem install pg
 ```
 
+The gems are stored on a central server `https://rubygems.org`.
+You can use `gem search` or the web interface to find gems.
+
+```
+$ gem search xml
+[...]
+klarna-xmlrpc (0.2.1)
+koara-xml (0.13.0)
+latexml-ruby (0.0.2)
+libxml-ext (0.4.2)
+[...]
+```
+
 Gems will normally be installed "globally" = in a way that they
 can be used by several users for several projects.
 
@@ -381,7 +423,78 @@ repository.
 
 ### npm for javascript and node.js
 
+Libraries for javascript are called **packages**  and can be installed using the command line tool `npm`:
 
+```
+npm install should 
+```
+
+You can search for packages using `npm search` or the web search interface
+at [https://www.npmjs.com/](https://www.npmjs.com/).
+
+```
+$ npm search xml
+[...]
+muxml-cli                                Streaming XML parser and formatter                           =t1st3
+mxmlc                                    Node.js module to build ActionScript                         =meekgeek
+my-json-to-xml-writer                    Accepts filename and json to write in the xml file.          =nileshp
+naive-request                            Very simple and naive xmlhttp library for the browser.       =kev_nz
+named-items-rss                          RSS feed generator. Add RSS feeds to any project. Supports…  =jamierevans
+[...]
+```
+
+Packages will normally be installed "locally" in the sub-folder `node_modules`.
+If you want to install them globally add `-g` to the command:
+
+```
+npm install -g grunt
+```
+
+To use packages in your javascript project you will write a `package.json` file where you list the packages (and maybe the versions) that you need.  To create
+the first version of this file use `npm init`.  Then you can use the `--save` 
+option to install packages and at the same time add them to the file:
+
+
+
+```
+$ npm install --save should
+my_first_javascript_project@1.0.0 /Users/USERNAME/mfjsp
+└─┬ should@11.1.1
+  ├── should-equal@1.0.1
+  ├── should-format@3.0.2
+  ├── should-type@1.4.0
+  ├── should-type-adaptors@1.0.1
+  └── should-util@1.0.0
+
+$ cat package.json
+{
+  "name": "my_first_javascript_project",
+  "version": "1.0.0",
+  "description": "reimplementation of leftpad",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maria Musterfrau",
+  "license": "ISC",
+  "dependencies": {
+    "should": "^11.1.1"
+  }
+}
+```
+
+
+In a serverside node.js project load the packages with `require`:
+
+```
+const http = require('http');
+```
+
+
+When using git with a node.js project you add `packages.json`  to the
+repository, and `node_modules` to `.gitignore`.   
+
+Client side javascript projects are a bit more complex.
 
 
 ### composer and packagist for php
