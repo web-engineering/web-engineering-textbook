@@ -435,11 +435,10 @@ at [https://www.npmjs.com/](https://www.npmjs.com/).
 ```
 $ npm search xml
 [...]
-muxml-cli                                Streaming XML parser and formatter                           =t1st3
-mxmlc                                    Node.js module to build ActionScript                         =meekgeek
-my-json-to-xml-writer                    Accepts filename and json to write in the xml file.          =nileshp
-naive-request                            Very simple and naive xmlhttp library for the browser.       =kev_nz
-named-items-rss                          RSS feed generator. Add RSS feeds to any project. Supports…  =jamierevans
+muxml-cli         Streaming XML parser and formatter      =t1st3
+mxmlc             Node.js module to build ActionScript    =meekgeek
+naive-request     Very simple xmlhttp library for the…    =kev_nz
+named-items-rss   RSS feed generator.                     =jamierevans
 [...]
 ```
 
@@ -484,22 +483,78 @@ $ cat package.json
 ```
 
 
-In a serverside node.js project load the packages with `require`:
+In a serverside node.js project load the packages with `require`. Before ECMAScript2015:
 
 ```
 const http = require('http');
 ```
 
+In ECMAScript2015:
+```
+import { http } from 'http';
+```
 
-When using git with a node.js project you add `packages.json`  to the
-repository, and `node_modules` to `.gitignore`.   
 
-Client side javascript projects are a bit more complex.
+To fix the exact versions of all dependencies, use
+`npm shrinkwrap`. This command creates a file `npm-shrinkwrap.json`.
+
+
+When using git with a node.js project you add `packages.json` and  `npm-shrinkwrap.json` to the repository, and `node_modules` to `.gitignore`.   
+
+
 
 
 ### composer and packagist for php
 
+One package manager for php is `composer`.  It can be used to
+install packages with `composer require`:
+
+```
+$ composer require friendsofphp/php-cs-fixer
+Using version ^1.12 for friendsofphp/php-cs-fixer
+./composer.json has been created
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Installing sebastian/diff (1.4.1)
+    Downloading: 100%
+
+  - Installing symfony/stopwatch (v3.1.6)
+    Loading from cache
+[...]
+  - Installing friendsofphp/php-cs-fixer (v1.12.3)
+    Downloading: 100%
+
+Writing lock file
+Generating autoload files
+```
+
+It installs the software and it's dependencies into the subfolder `vendor`. It also
+generates a `composer.json` and a `composer.lock` file.
+
+To install packages globally use global:
+
+```
+$ composer global require friendsofphp/php-cs-fixer
+```
  
+
+To use the packages in you php script you only need to
+require one file: `autoload.php`. Then you can start using
+the classes loaded from the packages:
+
+```
+require __DIR__ . '/vendor/autoload.php';
+
+$log = new Monolog\Logger('name');
+```
+
+When using git with a  php project you add `composer.json` and  `composer.lock` to the repository, and `vendor` to `.gitignore`.   
+
+
+A word of warning: there are two older levels of dependencies:
+
+* PECL [https://pecl.php.net/](https://pecl.php.net/) is a library of PHP extentions, that need to be compiled and linked to the php interpreter. 
+* PEAR [https://pear.php.net/](https://pear.php.net/) was the former package manager for php packages, see also [Fabien Potencier article: The rise of Composer and the fall of PEAR](http://fabien.potencier.org/the-rise-of-composer-and-the-fall-of-pear.html)
 
 References
 -----------
