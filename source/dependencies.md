@@ -322,9 +322,66 @@ As brew installs many types of software, there are many ways to use this softwar
 
 ### choco for windows
 
+
+
+
 ### gem and bundler for ruby
 
+Libraries for ruby are called **gems**  and can be installed using the command lin tool `gem`:
+
+```
+gem install pg
+```
+
+Gems will normally be installed "globally" = in a way that they
+can be used by several users for several projects.
+
+* e.g. `C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0` on Windows
+* e.g. `/usr/lib/ruby/2.3.0/` on Linux
+
+You can find out where a gem is installed by using `gem which`.
+
+On many machines `rvm` - the ruby version manager - is used to switch
+between different versions of the programming language.  Then each version
+of the language has it's own set of gems, and the paths include the
+word `rvm`:
+
+* `/usr/local/rvm/gems/ruby-2.2.3/gems/pg-0.18.4/lib/pg.rb` Unix, global rvm, ruby version 2.2.3, gem `pg` for postgresql
+* `/Users/USERNAME/.rvm/rubies/ruby-2.3.0/gems/pg-0.18.4/lib/pg.rb` Windows, rvm installed for one user only, ruby version 2.3.0, gem `pg` for postgresql
+
+
+To use gems in your ruby project you will write a `Gemfile` where you
+list the gems (and maybe the versions) that you need, e.g.:
+
+```
+source 'https://rubygems.org'
+
+gem 'activerecord'
+gem 'pg'
+gem 'mechanize'
+```
+
+To install all the gems and their dependencies run the command `bundle`.
+The bundler will find a constellation of dependencies and versions
+that work well together, and write this information to `Gemfile.lock`.
+
+In a non-rails project you load the gems in the ruby files that need
+them with `require`:
+
+```
+require 'active_record'
+```
+
+In a rails project this is not necessary, the gems are loaded by rails.
+
+
+When using git with ruby you add `Gemfile` and `Gemfile.lock` to the
+repository.   
+
+
 ### npm for javascript and node.js
+
+
 
 
 ### composer and packagist for php
