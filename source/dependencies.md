@@ -41,6 +41,13 @@ We will discuss six different systems:
   * `npm` for javascript and node.js
   * `composer` for php
 
+### libraries.io
+
+The site [libraries.io](https://libraries.io/) collects information
+for many package management systems, it's a central place to look
+for software to use.
+
+
 
 ### dynamiclly linked libraries
 
@@ -125,11 +132,10 @@ that only the original author of the package can release new versions.
 Dependency Hell
 ---------------
 
-
 For a big web project you will be using a lot of dependencies. This will lead
 to two problems (here shown in a ruby projects with gems):
 
-1. dependency resolution: gem A depends on version 1.1 of gem C, while gem B wants at least version 1.5.  You need to find the right version of every gem in your project that actually fits together
+1. dependency resolution: gem A depends on version 1.1 of gem C, while gem B wants at least version 1.5.  You need to find the right version for every gem in your project so that they actually all fit together
 2. different installation: when deploying to a production server, or even just when sharing code with other developers you need to make sure that the same constellation of gems and versions is used on every machine
 
 If this all goes horribly wrong you are in "dependency hell": you can't find the right versions
@@ -143,26 +149,26 @@ Bundler is the name of the ruby tool that solves this problem for ruby.
 Bundler is itself a gem, so you install it with `gem install bundler`.
 Beware: the command you will be using called `bundle`, not bundler.
 
-There is how it works: In every ruby project you write
+This is how it works: In every ruby project you write
 a `Gemfile` in which you define which gems and (to a certain degree) which versions you want.
 When you run `bundle install` bundler will:
 
 * read the Gemfile, 
-* pick out compatible versions of all the gems (if possible), 
+* pick out compatible versions of all the gems and their dependencies (if possible), 
 * install all these gems
 * write `Gemfile.lock`
 
 The lock-file contains a complete list of all the gems necessary for
 your project, and their version numbers.  This also includes dependencies of you
 dependencies, that you don't even knew you were using!
-The version numbers are now locked down, and will not change!
+The version numbers are now locked down, and will not change.
 
 When deploying to a new development machine or the production server, 
 you run `bundle install` and the exact same versions are now installed.
 
 All modern package managment systems offer a form of this solution, with
 
-* on file that is written by hand that contains your **wishes** 
+* one file that is written by hand that contains your **wishes** 
 * another file that is created by the package manager, that contains the exact version numbers
 
 
@@ -197,6 +203,15 @@ last (right most) number, so `~> 4.1.0` does allow `4.1.17` but not `4.2`.
 This is called a pessimistic version constraint, read more about 
 it in [the rubygem documentation](http://guides.rubygems.org/patterns/#pessimistic-version-constraint).
 
+There now is a common standard on how to use version numbers called
+[semantic versioning](http://semver.org/).  In short: Use three numbers
+for your version number:  MAJOR dot MINOR dot PATCH.  For example 3.1.0.
+
+* a new '''major''' version number means incompatible API changes,
+* a new '''minor''' version number means added functionality in a backwards-compatible manner, and
+* a new '''patch''' version means backwards-compatible bug fixes.
+
+But not all projects adher to this standard yet.
 
 ### Keeping Up To Date
 
@@ -211,7 +226,7 @@ you about new version or -- even more important -- new security updates for your
 
 
 
-Dependencies = Risk
+Dependencies always imply Risk
 ------------------
 
 Using a third party library will make you more
