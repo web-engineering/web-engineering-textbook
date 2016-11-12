@@ -20,18 +20,20 @@ considers the "strategic" direction of the work, coming up with
 ideas for improvements and likely future problems to address.
 The two programmers switch roles frequently.
 
-* two developers, one computer
-* a lot of talking. talk first!
-* "driver" is typing
-* "navigator" watches, thinks ahead, spots errors, keeps the big picture in mind
-* take turns, switch around roles, after 20 minutes
 
 ### why pair?
+
+At first glance two people programming together seems
+like a waste of resources: they could be typing in twice
+the amount of code if they each had a keyboard!
+
+But a closer look reveals some positive features of pair programming:
 
 * pairs are more productive than single developers (see Williams(2000))
 * better quality of life through contact with other humans
 * learn from each other
 * part of agile methodologies, used today in industry
+
 
 Pair Programming und git
 ------------------------
