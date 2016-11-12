@@ -18,7 +18,7 @@ namespace :guides do
         cp source_file, 'output/', :verbose => true
       end
       cp 'README.md', 'output/', :verbose => true
-      sh 'deploy.sh'
+      sh './deploy.sh'
     end
 
     desc "Generate .mobi file. The kindlegen executable must be in your PATH. You can get it for free from http://www.amazon.com/kindlepublishing"

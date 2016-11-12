@@ -15,6 +15,21 @@ By referring to this guide, you will be able to:
 Code Refactoring
 ------------------
 
+As beginners, programmer often do a lot of things at once:
+when they edit a file to implement a new feature, they will also
+fix some problems at the same time and change the formatting of the
+code.
+
+Becoming a better programmer entails slowing down and untangeling this:
+you stick to doing one thing at a time.  First fix this problem, test
+if it acutally worked.  Then add the new feature, test if that actually
+worked.  Then improve the code to be more easily readable, test if everything
+still works.
+
+When you are using git, you will do a commit for every single step
+mentioned above.
+
+
 
 ### what is "code refactoring" ?
 
