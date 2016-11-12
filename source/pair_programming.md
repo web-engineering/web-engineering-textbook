@@ -14,6 +14,12 @@ After reading this guide, you will:
 Pair Programming
 ----------------
 
+In pair programming two programmers work together at one workstation. 
+One, the driver, writes code while the other, the observer or navigator,
+considers the "strategic" direction of the work, coming up with 
+ideas for improvements and likely future problems to address.
+The two programmers switch roles frequently.
+
 * two developers, one computer
 * a lot of talking. talk first!
 * "driver" is typing

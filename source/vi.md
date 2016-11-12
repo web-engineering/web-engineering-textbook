@@ -106,9 +106,6 @@ from normal mode by the showing `-- INSERT --` in the last line.
 Command-line mode puts the cursor in the last line, and shows the colon
 (that you typed in to get into command-line mode).
 
-
-
-
 Resources 
 ----------
 

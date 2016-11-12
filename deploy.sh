@@ -10,7 +10,7 @@ fi
 # Save some useful information
 REPO=git@github.com:web-engineering/web-engineering.github.io.git
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-SHA=`git rev-parse --verify HEAD`
+SHA=`git log -1 --pretty=%h`
 MESSAGE=`git log -1 --pretty=%B`
 AUTHOR=`git log -1 --pretty=%an`
 EMAIL=`git log -1 --pretty=%ae`
@@ -56,7 +56,7 @@ fi
 echo 'Commit the "changes", i.e. the new version.'
 # The delta will show diffs between new and old versions.
 git add .
-git commit -m "originally ${SHA}: ${MESSAGE}"
+git commit -m "${MESSAGE} (originally ${SHA})"
 
 # Now that we're all set up, we can push.
 echo "git push origin master"
