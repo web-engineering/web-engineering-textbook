@@ -23,18 +23,21 @@ ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
 chmod 600 deploy_key
+echo "got the deploy_key:"
+echo `file deploy_key`
+
+echo "adding to ssh-agent"
 eval `ssh-agent -s`
 ssh-add deploy_key
 
-# Clone the existing gh-pages into out/
-# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+# Clone the existing github pages into out/
 echo "git clone $REPO out"
 git clone $REPO out
 
-# Clean out existing contents
+echo "Clean out existing contents"
 rm -rf out/**/* || exit 0
 
-# Copy over results of build
+echo "Copy over results of build"
 cp -a output/* out/
 
 # Now let's go have some fun with the cloned repo
@@ -48,10 +51,11 @@ if [ -z `git diff --exit-code` ]; then
     exit 0
 fi
 
-# Commit the "changes", i.e. the new version.
+echo 'Commit the "changes", i.e. the new version.'
 # The delta will show diffs between new and old versions.
 git add .
 git commit -m "originally ${SHA}: ${MESSAGE}"
 
 # Now that we're all set up, we can push.
-git push $SSH_REPO
+echo "git push origin master"
+git push origin master
