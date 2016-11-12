@@ -18,18 +18,12 @@ echo "will commit ${AUTHOR} <${EMAIL}>: commit ${SHA} ${MESSAGE}"
 echo "to repo ${SSH_REPO}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-ENCRYPTED_KEY=$encrypted_0a6446eb3ae3_key
-ENCRYPTED_IV=$encrypted_0a6446eb3ae3_iv
-
-echo "ENCRYPTION_LABEL = ${ENCRYPTION_LABEL}"
-echo "KEY_VAR          = ${ENCRYPTED_KEY_VAR}"
-echo "IV_VAR           = ${ENCRYPTED_IV_VAR}"
-echo "KEY              = ${ENCRYPTED_KEY}"
-echo "IV               = ${ENCRYPTED_IV}"
-
+ENCRYPTED_KEY=$encrypted_480ea2132df2_key
+ENCRYPTED_IV=$encrypted_480ea2132df2_iv
+ 
 echo "openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d"
-
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
+
 chmod 600 deploy_key
 echo "got the deploy_key:"
 echo `file deploy_key`
