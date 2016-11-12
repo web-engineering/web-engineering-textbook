@@ -3,7 +3,8 @@
 My Textbook on Web Engineering. Developed on github, published at
 http://web-engineering.github.io
 
-This covers web workflows and web operations.
+This covers tools, methods, workflows used in web development.
+We plan to add the basics of web operations later on.
 See my other books:
 
 * http://web-development.github.io - introduction to html, css, javascript, php. in german
