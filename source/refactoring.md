@@ -1,8 +1,8 @@
 Refactoring
 =======================
 
-This guide will explain why you should write automatic tests
-for your web application. 
+This guide will explain how you can use refactoring 
+to improve your code.
 By referring to this guide, you will be able to:
 
 * Understand how refactoring is different from changing code
