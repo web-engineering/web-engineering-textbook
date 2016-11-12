@@ -25,7 +25,7 @@ you still will write automated tests too.
 
 ### Why write automatic tests?
 
-There are many reasons why you would want to write test for your program:
+There are many reasons why you would want to write tests for your program:
 
 * when you first write the program: to know if the program works (as specified)
 * to know if it still works after adding a new feature
@@ -55,7 +55,7 @@ This test of the function `foo` consists of:
 * the calling of the function foo with the prepared input
 * comparing the output of foo to the expected output
 
-For the last step often the word `assert` or assertion is used.
+For the last step the word `assert` or assertion is often used.
 
 Here is a longer example in ruby:
 
@@ -97,11 +97,13 @@ do a pattern match on the resulting string.
 
 As a beginner you should distinguish at least two types of tests:
 
-* unit test - tests the function of one unit (be it a class, a package, one model, one view....)
+* unit test - tests one specific unit of code (be it a class, a package, one model, one view....)
 * integration test - tests the whole program from the perspective of a user
 
 Integration tests give you more valuable insights from a users
 perspective, e.g.: "the shopping cart checkout does not work".
 Unit tests help developers find the part of the program that is
 responsible for a problem: "the cookie store class breaks if you store an undefined value".
+
+
 
