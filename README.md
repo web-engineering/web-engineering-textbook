@@ -7,7 +7,7 @@ This covers web workflows and web operations.
 See my other books:
 
 * http://web-development.github.io - introduction to html, css, javascript, php. in german
-* http://backend--development.github.io - ruby on rails and nodes.js
+* http://backend-development.github.io - ruby on rails and nodes.js
 
 
 ## How to Read the book
