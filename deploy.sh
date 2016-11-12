@@ -2,8 +2,8 @@
 set -e # Exit with nonzero exit code if anything fails
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
-    echo "Skipping deploy;"
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "master" ]; then
+    echo "Skipping deploy because {$TRAVIS_PULL_REQUEST} and {$TRAVIS_BRANCH};"
     exit 0
 fi
 
@@ -12,6 +12,8 @@ REPO=git@github.com:web-engineering/web-engineering.github.io.git
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 MESSAGE=`git log -1 --pretty=%B`
+AUTHOR=`git log -1 --pretty=%an`
+EMAIL=`git log -1 --pretty=%ae`
 
 # Clone the existing gh-pages into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
@@ -26,7 +28,7 @@ cp -a output/* out/
 # Now let's go have some fun with the cloned repo
 cd out
 git config user.name "$AUTHOR via Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
+git config user.email "$EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
 if [ -z `git diff --exit-code` ]; then
