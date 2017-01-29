@@ -14,6 +14,18 @@ After reading this guide, you will be able to:
 
 ----------------------------------------------------------------
 
+Emergency Vi Help
+------------
+
+If you ever need to leave vi, try these commands:
+
+First, always press `escape`
+
+* then type in `:q!` and hit `enter` to quit without saving
+* then type in `:wq!` and hit `enter` to save any changes made and then quit
+
+
+`vi` is a very, very old editor that is still used today.
 History
 ------------
 
