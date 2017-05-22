@@ -124,6 +124,7 @@ management system a lot of downloads happen automatically.  So we want
 to make sure the software we download is really what it is supposed to be.
 
 A package management system can offer different methods of making it more secure:
+
 * comparing **checksums** of the code to  make sure the downloaded package contains the same code as the original package 
 * cryptographically **signing** the code in the package and checking this signature before installing. This ensures
 that only the original author of the package can release new versions.  
@@ -435,6 +436,12 @@ In a rails project this is not necessary, the gems are loaded by rails.
 When using git with ruby you add `Gemfile` and `Gemfile.lock` to the
 repository.   
 
+
+Keeping up to date:
+
+* `bundle outdated` shows which gems can be updated
+* [bummr](https://github.com/lpender/bummr) update each gem separately, removes failing updates
+* [brakeman](https://github.com/presidentbeef/brakeman) check for security risks, incl
 
 ### npm for javascript and node.js
 
