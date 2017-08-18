@@ -17,7 +17,15 @@ After reading this guide, you will be able to:
 Emergency Vi Help
 ------------
 
-If you ever need to leave vi, try these commands:
+When working on the command line, you might stumble into vi
+without meaning to.  For example if you have not set the EDITOR
+environment variable to another editor than vi.
+
+You can recognize vi by the line of squiggly "tilde" symbols running down the left side of the screen:
+
+![vi modes](images/vi-recognize-modes.png)
+
+If you need to leave vi, try these commands:
 
 First, always press `escape`
 
@@ -25,7 +33,6 @@ First, always press `escape`
 * then type in `:wq!` and hit `enter` to save any changes made and then quit
 
 
-`vi` is a very, very old editor that is still used today.
 History
 ------------
 
@@ -121,6 +128,6 @@ Command-line mode puts the cursor in the last line, and shows the colon
 Resources 
 ----------
 
-* [vim adventures](https://vim-adventures.com)
 * [Text Editor ed](https://en.wikipedia.org/wiki/Ed_(text_editor)) in Wikipedia
 * [Text Editor ex](https://en.wikipedia.org/wiki/Ex_(text_editor)) in Wikipedia
+* [Vim isn’t that scary. Here are 5 free resources you can use to learn it.](https://medium.freecodecamp.org/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d)
