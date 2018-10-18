@@ -5,7 +5,6 @@ With this guide will get to know some tools
 that will help you produce good code, and keep
 the quality up.
 
-
 * this
 * that
 
@@ -47,10 +46,9 @@ Linting tools are available for all languages:
 * [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 
 You can incorporate linting into your editor, this
-way you will be 
+way you will never stray far from the style guide.
 
-
-## Configuring Rubocop
+## Example Linter for Ruby: Rubocop
 
 When you run `rubocop` it will examine all the files
 in the current directory, and in subdirectories.

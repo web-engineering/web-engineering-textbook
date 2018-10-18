@@ -1,7 +1,7 @@
 Managing Dependencies
 =======================
 
-The program you write will depend on other code
+The program you write will depend on  code
 that other people have written.  This guide will teach you 
 how to install, use and upgrade dependencies for your web application. 
 It covers ruby, javascript and php.
@@ -20,7 +20,7 @@ After working through this guide you will be able to:
 Dependencies
 -----------
 
-The program you write will depend on other code
+The program you write will depend on  code
 that other people have written. Some of this code
 has been packaged into operating systems or applications:
 Linux, Postgres, Apache, nginx, and so on.
@@ -48,7 +48,6 @@ for many package management systems, it's a central place to look
 for software to use.
 
 
-
 ### dynamiclly linked libraries
 
 Why do we need to look at `apt`, `brew` or `choco`?  Isn't the
@@ -58,8 +57,9 @@ In many cases using php-only or ruby-only libraries will be enough.
 But sometimes the libraries we use in our dynamic languages use
 other code originally written in c or c++.
 
-The image processing library `imagemagick` is a good example.  If you want to use the ruby gem [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4) to edit images you will find that to install
-the gem, you first need to install the program and the library "ImageMagick".
+The image processing library `imagemagick` is a good example.  If you want to use the ruby gem [rmagick](https://rubygems.org/gems/rmagick/versions/2.15.4) or the npm package [easyimage](https://www.npmjs.com/package/easyimage) to edit images  you will that they deplend on the library "ImageMagick"
+which is writen in [C](https://github.com/ImageMagick/ImageMagick/tree/master/MagickCore).
+
 You do this using apt or brew or
 [the windows installer with dynamic link libraries](http://www.imagemagick.org/script/binary-releases.php#windows).
 
@@ -238,6 +238,8 @@ productive today. But it could well harm you in the long run:
 * It might disappear and be replaced, causing havoc in the meantime, like left_pad did. See [article in theregister on left_pad](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)
 
 These examples were taken from [a longer article](https://medium.freecodecamp.com/code-dependencies-are-the-devil-35ed28b556d#.4a7d59i6u) that discusses ways to minimize the risk.
+
+* Use [bundlephobia](https://bundlephobia.com/) to measure the size of javascript dependencies
 
 Quick Start Guides
 --------

@@ -106,3 +106,45 @@ Unit tests help developers find the part of the program that is
 responsible for a problem: "the cookie store class breaks if you store an undefined value".
 
 
+Test Driven Development (TDD)
+-----------------
+
+If you write tests after writing the code of the program itself 
+you will face several problems:
+
+* why write tests now, when we are done programming? isn't it a wast of time?
+* we already know the problems our program has, and will write friendly tests that avoid these problems
+* the system is finished and the architecture does not lend itself to testing
+
+To avoid these problems  "Test Driven Development" turns this around:
+
+* you write the test first
+* then you write just enough of your program to satisfy the test
+* then you refactor your code 
+
+This cycle is also known by three keywords:
+
+* red
+* green
+* refactor
+
+
+
+### Tipps for TDD
+
+* Start with the simple test cases 
+* Always run the test once before you start implementing (red!)
+* do not add code that is not needed (yet) (see [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it))
+* build your program from small units (functions, classes, components), that can be tested separately
+* always test the outside of the unit, not the inside 
+
+
+Getting Startet with testing in JS
+----------------
+
+You already have a setup for Javascript and Babel that
+let's you run a `build` and a `start` step.
+
+
+
+
