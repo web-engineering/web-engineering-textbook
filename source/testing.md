@@ -8,6 +8,9 @@ By referring to this guide, you will be able to:
 * Understand testing terminology
 * Write unit and integration tests for your application
 
+
+REPO: You can find the setups discussed here in the [example setups](https://github.com/web-engineering/example-setups) repository.
+
 ---------------------------------------------------------------------------
 
 Testing Software
@@ -98,10 +101,11 @@ do a pattern match on the resulting string.
 As a beginner you should distinguish at least two types of tests:
 
 * unit test - tests one specific unit of code (be it a class, a package, one model, one view....)
-* integration test - tests the whole program from the perspective of a user
+* end-to-end test - tests the whole program from the perspective of a user
 
-Integration tests give you more valuable insights from a users
+End-to-end  tests give you more valuable insights from a users
 perspective, e.g.: "the shopping cart checkout does not work".
+
 Unit tests help developers find the part of the program that is
 responsible for a problem: "the cookie store class breaks if you store an undefined value".
 
@@ -139,11 +143,60 @@ This cycle is also known by three keywords:
 * always test the outside of the unit, not the inside 
 
 
-Getting Startet with testing in JS
+Getting Startet with unit testing in Javascript
 ----------------
 
-You already have a setup for Javascript and Babel that
-let's you run a `build` and a `start` step.
+
+
+### TDDbin
+
+
+On the site `https://tddbin.com` you can try out TDD without having to install or configure anything.  It gives you modern Javascript  (compiled to ES5 in the background) and the testing framework mocha.
+
+
+![tddbin in action](images/tddbin.png)
+
+[tddbin](http://tddbin.com/#?kata=es6/language/class/creation)
+
+
+### Mocha
+
+To use mocha to test your command line javascript code
+you can set up a project, add mocha as a development dependency:
+
+```
+npm install --save-dev mocha
+```
+
+Put your first tests into a file `test.js` which you can run
+either from the commandline as `mocha test.js` or through npm
+as `npm test`.
+
+Inside your test you need to require `assert`:
+
+```
+var assert = require('assert');
+```
+
+You can find an example setup as [folder 04 in the repo](https://github.com/web-engineering/example-setups/tree/master/04-testing)
+
+### Mocha and Babel
+
+Using modern Javascript and transpiling it to ES5 complicates the test setup.
+The tests are also written in modern Javascript and also transpiled.
+Then the resulting tests in ES5 are run against the resulting ES5 of the program code.
+
+You can find an example setup as [folder 05 in the repo](https://github.com/web-engineering/example-setups/tree/master/05-testing-babel)
+
+
+
+Literature
+---------
+
+* Beck, Kent. Test-driven development: by example. Addison-Wesley Professional, 2003.
+* Gupta, Ravi Kumar, Hetal Prajapati, and Harmeet Singh. Test-Driven JavaScript Development. Packt Publishing Ltd, 2015.
+* Fields, Jay, Shane Harvie, Martin Fowler, and Kent Beck. Refactoring: Ruby Edition. Pearson Education, 2009.
+* Metz, Sandi. Practical Object-Oriented Design in Ruby: An Agile Primer. Pearson Education, 2013.
 
 
 
