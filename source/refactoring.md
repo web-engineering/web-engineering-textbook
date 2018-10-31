@@ -36,18 +36,74 @@ mentioned above.
 * "restructuring an existing body of code
 * altering its internal structure
 * without changing its external behavior"
-* or for short:
+
+
+or for short:
+
 * change your code:
-* but only how you do it,
-* not what you do.
+* but only **how** you do it,
+* not **what** you do.
 
 
-### refactoring and testing
+### Refactoring and Testing
+
+Refactoring and Testing go hand in hand: having tests
+gives you the assurance that you are not breaking things when
+you are refactoring the code:
 
 
-* run the unit test (it should be green)
+* run the test (it should be green)
 * refactor
-* run the unit test (it should still be green)
+* run the test (it should still be green)
 * done
+
+### Code Smells
+
+So what should you refactor?  You can look for "code smells" - common patterns
+of "bad" code. In their Refactoring book, Fowler, Beck, Brant, Opdyke and Roberts give a list of such code smells. 
+
+
+#### Simple Examples
+
+The first code smell is **duplicated code**. "If you see the same code
+structure in more than one place, you can be sure that your program will be better
+if you find a way to unify them."
+
+Some other code smells that are kind of selfexplanatory:
+
+* Long Method
+* Large Class
+* Long Parameter List
+
+
+#### Comments
+
+Another intresting code smell is "comments".  This is not meant to imply that
+comments are bad, but rather that a code area that needs a lot of comments
+is probably in need of refactoring.
+
+An easy way to get rid of comments is to extract a method with
+a good name:
+
+```
+# output the header
+puts "<head>"
+puts "  <meta charset='utf-8'>"
+puts "</head>"
+```
+
+turns into:
+
+```
+output_the_header()
+```
+
+### Catalog of Refactorings
+
+Chapters 7 to 12 of the Refactoring book give a long catalog of Refactorings.
+The first Refactoring is **Extract Method**
+
+
+
 
 
