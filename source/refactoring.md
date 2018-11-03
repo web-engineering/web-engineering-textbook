@@ -75,14 +75,52 @@ Some other code smells that are kind of selfexplanatory:
 * Large Class
 * Long Parameter List
 
+Study the book to learn about code smells!  You don't have to read it all
+in one go.
 
-#### Comments
+### Catalog of Refactorings
 
-Another intresting code smell is "comments".  This is not meant to imply that
+Chapters 7 to 12 of the Refactoring book give a long catalog of Refactorings.
+A short version of the catalog is also [available online](https://refactoring.com/catalog/), showing all the code example. The book gives you a proper explanation for every refactoring.
+
+Again: study the book to get to know the refactorings.  You can take your time, and read only a few each day. 
+
+§
+
+The first Refactoring is [Extract Method](https://refactoring.com/catalog/extractMethod.html). Here's the code example from the Ruby version of the book. The code we start out with:
+
+```
+def print_owing(amount)
+  print_banner
+  puts "name: #{@name}"
+  puts "amount: #{amount}"
+end
+```
+
+And after the refactoring:
+
+``
+def print_owing(amount)
+  print_banner
+  print_details amount
+end
+
+def print_details(amount)
+  puts "name: #{@name}"
+  puts "amount: #{amount}"
+end
+```
+
+
+#### Code Smells and Refactorings
+
+Let's See how code smells and refactoring work together.
+
+An intresting code smell is "comments".  This is not meant to imply that
 comments are bad, but rather that a code area that needs a lot of comments
 is probably in need of refactoring.
 
-An easy way to get rid of comments is to extract a method with
+An easy way to get rid of comments is to **extract** a **method** with
 a good name:
 
 ```
@@ -92,18 +130,31 @@ puts "  <meta charset='utf-8'>"
 puts "</head>"
 ```
 
-turns into:
+turns into a call to the method
 
 ```
-output_the_header()
+output_the_header
 ```
 
-### Catalog of Refactorings
-
-Chapters 7 to 12 of the Refactoring book give a long catalog of Refactorings.
-The first Refactoring is **Extract Method**
+with the definition of the method:
 
 
+```
+def output the header
+  puts "<head>"
+  puts "  <meta charset='utf-8'>"
+  puts "</head>"
+end
+```
 
+
+
+### Refactoring and your Editor
+
+Modern programming editors can help you do some refactorings:
+
+* [vscode](https://code.visualstudio.com/docs/editor/refactoring)
+* [webstorm](https://www.jetbrains.com/help/webstorm/specific-javascript-refactorings.html)
+* [rubymine](https://www.jetbrains.com/help/ruby/refactoring-source-code.html)
 
 
