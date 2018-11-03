@@ -37,7 +37,6 @@ mentioned above.
 * altering its internal structure
 * without changing its external behavior"
 
-
 or for short:
 
 * change your code:
@@ -62,9 +61,6 @@ you are refactoring the code:
 So what should you refactor?  You can look for "code smells" - common patterns
 of "bad" code. In their Refactoring book, Fowler, Beck, Brant, Opdyke and Roberts give a list of such code smells. 
 
-
-#### Simple Examples
-
 The first code smell is **duplicated code**. "If you see the same code
 structure in more than one place, you can be sure that your program will be better
 if you find a way to unify them."
@@ -85,7 +81,8 @@ A short version of the catalog is also [available online](https://refactoring.co
 
 Again: study the book to get to know the refactorings.  You can take your time, and read only a few each day. 
 
-§
+
+### Simple Example
 
 The first Refactoring is [Extract Method](https://refactoring.com/catalog/extractMethod.html). Here's the code example from the Ruby version of the book. The code we start out with:
 
@@ -112,7 +109,7 @@ end
 ```
 
 
-#### Code Smells and Refactorings
+### Code Smells and Refactorings
 
 Let's See how code smells and refactoring work together.
 
@@ -146,7 +143,6 @@ def output the header
   puts "</head>"
 end
 ```
-
 
 
 ### Refactoring and your Editor
