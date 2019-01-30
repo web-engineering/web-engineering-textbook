@@ -54,8 +54,19 @@ $ heroku buildpacks:add https://github.com/hone/heroku-buildpack-static
 ```
 
 We need two buildpacks: nodejs to run the build, and static to do
-the actuall serving of the pages.  To configure the static buildpack
-we create a file `static.json`:
+the actuall serving of the pages.  
+
+The node buildpack will run `npm install` automatically.
+this is considered to be the build step. But we need another
+build step to build our app. So we add `heroku-postbuild` 
+to `package.json` and run our build there:
+
+```sh
+    "heroku-postbuild": "webpack --mode production",
+```
+
+
+To configure the static buildpack we create a file `static.json`:
 
 ```sh
 $ heroku static:init
@@ -101,7 +112,6 @@ the fonts, images, css and js files should be served by the webserver directly. 
   }  
 }
 ```
-
 
 
 
