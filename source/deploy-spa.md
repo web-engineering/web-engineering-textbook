@@ -20,17 +20,29 @@ A Single Page App makes one html file appear
 to contain many pages.  When a users clicks on a link
 the URL changes and new content appears, just like
 in a classical static web site.  But the new
-content and the URL change is initiated by JavaScript.
-There need not be a HTTP Request to load the new
-content, the content might be created locally.
+content and the URL change are both done by JavaScript.
 
-For hosting this 
+See [How Single-Page Applications Work](https://blog.pshrmn.com/entry/how-single-page-applications-work/) for a good introduction.
+
+
+For example let's consider the single page app on `https://mini-spa-demo.herokuapps.com/`. There might be only one `index.html`, but inside this page the URL might be changed to
+
+* `https://mini-spa-demo.herokuapps.com/about`
+* `https://mini-spa-demo.herokuapps.com/product/1`
+* `https://mini-spa-demo.herokuapps.com/product/2`
+
+and so on.
+
+Each of these URLs also need to work when you call them
+directly, without entering through index.html.  This is
+what we need to configure our webserver for.
+
 
 
 Deploying to Heroku
 -------------------
 
-You need a heroku account and the heroku toolbelt (= command line program) installed.
+You need a heroku account and the heroku toolbelt (= command line program) installed. Remember: heroku expects your app to be in the **root folder of the repository**!!
 
 Heroku offers a plugin to the heroku toolbelt, install it with
 
@@ -72,11 +84,11 @@ To configure the static buildpack we create a file `static.json`:
 $ heroku static:init
 ? Enter the directory of your app: dist/
 ? Drop `.html` extensions from urls? Yes
-? Path to custom error page from root directory: 404.html
+? Path to custom error page from root directory: 404
 {
   "root": "dist/",
   "clean_urls": true,
-  "error_page": "404.html"
+  "error_page": "404"
 }
 ```
 
