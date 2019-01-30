@@ -44,6 +44,10 @@
   name: Web Operations
   documents:
     - 
+      name: Deploy a SPA
+      url: deploy-spa.html
+      description: How to deploy your Single Page App    
+    - 
       name: Webserver
       url: webserver.html
       description: Webserver
