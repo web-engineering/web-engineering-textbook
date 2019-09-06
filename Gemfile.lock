@@ -37,8 +37,8 @@ GEM
       nokogiri (~> 1.6.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rake (11.3.0)
-    redcarpet (3.3.4)
+    rake (12.3.3)
+    redcarpet (3.5.0)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -54,7 +54,7 @@ DEPENDENCIES
   redcarpet
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.17.3

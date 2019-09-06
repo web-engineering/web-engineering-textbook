@@ -103,10 +103,15 @@ As a beginner you should distinguish at least two types of tests:
 * unit test - tests one specific unit of code (be it a class, a package, one model, one view....)
 * end-to-end test - tests the whole program from the perspective of a user
 
-End-to-end  tests give you more valuable insights from a users
+For Web-Application the end-to-end tests means: sending an HTTP request
+to the backend, which really talks to the database, returns HTML+CSS+JS as
+it normally would, and then have the javascript interpreted and run as
+it would in a browser.  This takes a lot of setup work and is slow.
+
+But end-to-end tests give you more valuable insights from a users
 perspective, e.g.: "the shopping cart checkout does not work".
 
-Unit tests help developers find the part of the program that is
+Unit tests are easier to write, run faster, and help developers find the part of the program that is
 responsible for a problem: "the cookie store class breaks if you store an undefined value".
 
 
@@ -116,7 +121,7 @@ Test Driven Development (TDD)
 If you write tests after writing the code of the program itself 
 you will face several problems:
 
-* why write tests now, when we are done programming? isn't it a wast of time?
+* why write tests now, when we are done programming? isn't it a waste of time?
 * we already know the problems our program has, and will write friendly tests that avoid these problems
 * the system is finished and the architecture does not lend itself to testing
 
