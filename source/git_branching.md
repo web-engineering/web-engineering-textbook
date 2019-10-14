@@ -9,6 +9,7 @@ After reading this guide, you will know:
 * How to merge your changes and your teammates changes
 * How to create a branch
 * How to merge your branch back into master
+* How to use merger requests / pull requests in your project
 
 ----------------------------------------------------------------
 
@@ -210,11 +211,28 @@ git commit -m 'MERGE: consolidated changes in the footer, using footer-tag from 
 ```
 
 
-Git Flow
+Merge Requests / Pull Requests
 ---------
 
+When working in a team with git you can use git not only
+for the code, but also for discussions around the code,
+especially for discussions about what to include and what to change.
 
-git flow is a specific way of using branches:
+The main idea here is the merge request, as show in this
+simplified graphics from github:
+
+![merge request](/images/branch-merge-request.png)
+
+1. When you start working on a new feature, you create a new branch (often called "feature branch")
+2. you make several commits, until you think your code is ready
+3. now you push your branch onto the central repository (but not to master yet!)
+4. now you do a "merge request" (gitlab) or "pull request" (github)
+5. you teammates can look at your code and write comments
+6. you can do new commits
+7. after a consensus is reached, the branch is merged into master
+
+
+git flow is githubs explanation of this workflow:
 
 [github flow](https://guides.github.com/introduction/flow/)
 

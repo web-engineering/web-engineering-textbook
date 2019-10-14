@@ -42,7 +42,7 @@ This simple example in Javascript tests a function foo:
 
     describe('foo function', function() {
       
-      it('converts number 1 correctly', function() {
+      it('converts number 1 correctly', () => {
         let input = { value: 1, language: english };
         assert.equal(foo(input), 'one');
       });
@@ -81,7 +81,7 @@ Here is a longer example in ruby:
           @customer.add_rental(Rental.new(@movie_2, 3))
           @customer.add_rental(Rental.new(@movie_3, 4))
           @customer.statement.must_match /Amount owed is 12.5/
-          @customer.statement.must_match /You earned 4 frequent renter points/
+          @customer.statement.must_match /You earned 4 points/
         end 
       end
     end
@@ -136,6 +136,12 @@ This cycle is also known by three keywords:
 * red
 * green
 * refactor
+
+because
+
+* in the "red" phase you write the test, but there's no implementation yet. so the test does not pass, it is red
+* then, in the "green" phase, you write just enough of your program to satisfy the test, until the test turns green
+* and finally, you "refactor" your program: you do not change the functionality (and do not break the test), but you increase readability and maintainability
 
 
 
