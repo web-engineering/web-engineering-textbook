@@ -1,6 +1,3 @@
 language: ruby
 rvm:
- - 2.5.1
-env:
-  global:
-  - ENCRYPTION_LABEL: "0a6446eb3ae3"
+ - 2.6.1

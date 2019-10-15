@@ -12,8 +12,9 @@ module RailsGuides
       @node_ids = {}
     end
 
-    def render(body, source_file)
+    def render(body, source_file, output_path = 'unknown')
       @raw_body = body
+      @output_path = output_path
       extract_raw_header_and_body
       generate_header
       generate_title
@@ -67,7 +68,7 @@ module RailsGuides
       end
 
       def generate_body
-        @body = engine.render(@raw_body)
+        @body = engine.render(@raw_body)      
       end
 
       def generate_header
@@ -77,6 +78,8 @@ module RailsGuides
       def generate_structure
         @headings_for_index = []
         if @body.present?
+
+
           @body = Nokogiri::HTML(@body).tap do |doc|
             hierarchy = []
 
@@ -99,7 +102,7 @@ module RailsGuides
                 node.inner_html = "#{node_index(hierarchy)} #{node.inner_html}"
               end
             end
-          end.to_html
+          end.at('body').inner_html      
         end
       end
 
@@ -116,7 +119,7 @@ module RailsGuides
 
           @index = Nokogiri::HTML(engine.render(raw_index)).tap do |doc|
             doc.at('ol')[:class] = 'chapters'
-          end.to_html
+          end.at('body').inner_html
 
           @index = <<-INDEX.html_safe
           <div id="subCol">
@@ -129,9 +132,9 @@ module RailsGuides
 
       def generate_title
         if heading = Nokogiri::HTML(@header).at(:h2)
-          @title = "Web Engineering Textbook: #{heading.text}".html_safe
+          @title = "#{heading.text} in the Backend Development Textbook".html_safe
         else
-          @title = "Web Egineeering Textbook"
+          @title = "Backend Development Textbook"
         end
       end
 
@@ -153,10 +156,17 @@ module RailsGuides
 
       def render_page( source_file )
         @view.content_for(:source_file) { source_file  }
-        @view.content_for(:header_section) { @header }
+        @view.content_for(:output_path) { @output_path  }
+        if heading = Nokogiri::HTML(@header).at(:h2) then
+          @view.content_for(:header_h2_section) { heading.text.html_safe }
+          @view.content_for(:header_section) { @header }
+        else
+          @view.content_for(:header_h2_section) { "no heading" }
+          @view.content_for(:header_section) { @header }
+        end
         @view.content_for(:page_title) { @title }
-        @view.content_for(:index_section) { @index }
-        @view.render(:layout => @layout, :text => @body)
+        @view.content_for(:index_section) { @index }     
+        @view.render(:layout => @layout, :html => @body.html_safe)
       end
   end
 end
