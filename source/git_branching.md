@@ -236,6 +236,21 @@ git flow is githubs explanation of this workflow:
 
 [github flow](https://guides.github.com/introduction/flow/)
 
+
+### When a merge request can't be merged
+
+
+You might run into trouble when the master has moved on from the position where you
+created your branch.
+
+Then you need to
+
+1. get the current version of master by switching to master `git checkout master` and pulling in the newest commits `git pull origin master`
+2. merge these newest commits into your branch by switching to your branch `git checkout YOUR_BRANCH`  and `git merge master` and solving any conflicts
+3. pushing this new version up to the server with `git push origin YOUR_BRANCH`
+
+
+
 ### Resources 
 
 * [Git Book: Chapter 3.2](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
