@@ -96,7 +96,7 @@ end
 
 And after the refactoring:
 
-``
+```
 def print_owing(amount)
   print_banner
   print_details amount
