@@ -15,10 +15,16 @@
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" />
 
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <style>
+
+    .slide img[src$=svg] {
+      width: 100%;
+    }
+  </style>
 </head>
 <body class="guide">
   <div>
-    <a href="http://github.com/web-engineering/web-engineering-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 10;" src="images/forkme.png" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/web-engineering/web-engineering-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 10;" src="images/forkme.png" alt="Fork me on GitHub"></a>
   </div>
   <div id="topNav">
     <div class="wrapper">
@@ -32,8 +38,7 @@
   </div>
   <div id="header">
     <div class="wrapper clearfix">
-      <h1><a href="index.html" title="Return to home page">Web<span>Engineering</span></a></h1>
-      <ul class="nav">
+      <h1><a href="index.html" title="Return to home page">Web<span>Engineering</span></a></h1>      <ul class="nav">
         <li><a class="nav-item" href="index.html">Home</a></li>
         <li class="guides-index guides-index-large">
           <a href="index.html" onclick="guideMenu(); return false;" id="guidesMenu" class="guides-index-item nav-item">Index  &#x25BC;</a>
@@ -44,7 +49,7 @@
               <% docs_for_menu(position).each do |section| %>
                 <dt><%= section['name'] %></dt>
                 <% finished_documents(section['documents']).each do |document| %>
-                <dd><a href="<%= document['url'] %>"><%= document['name'] %></a></dd>
+                <dd><a class="nav-item" href="<%= document['url'] %>"><%= document['name'] %></a></dd>
                 <% end %>
               <% end %>
               </dl>
@@ -53,22 +58,67 @@
           </li>
         <li><a class="nav-item" href="https://github.com/web-engineering/web-engineering-textbook/">Contribute</a></li>
       </ul>
-      </div>
     </div>
   </div>
+
   <hr class="hide" />
 
   <div id="feature">
     <div class="wrapper">
+      <div class="header_section">
+        <%= yield :header_section %>
+      </div>
       <%= yield :index_section %>
-      <%= yield :header_section %>
     </div>
   </div>
+
+<%
+
+        def scan_until(regex)
+          match = @string.match(regex)
+          return unless match
+          @string = match.post_match
+          match
+        end
+
+        def add_slide_links(html)
+          my_path = content_for(:output_path)
+          link = "slides_#{ my_path&.gsub('./output/', '') }"
+          #puts "linking to #{link}"
+
+          @string = html.dup
+
+          pending = ""
+          output = "<div class='slide'><a id='slide-1'></a>\n"
+          i = 1
+
+          until @string.empty?
+            match =  scan_until /^(<h[23456].*?>|<hr>+|^(<p>)*§(<.p>)*)$/m
+
+            break if !match
+
+            output << match.pre_match
+
+            output << "</div>\n<div class='slide'>\n<a class='slide_break' id='slide-#{i}' href='#{link}#slide-#{i}'>▻</a>\n"
+            i += 1
+            if match[0] =~ /§/ then
+              # discard match
+            else 
+              output << match[0]
+            end
+          end # untile @string.empty?
+
+          output << @string
+          output << "</div>"
+
+          output           
+        end
+      %>  
 
   <div id="container">
     <div class="wrapper">
       <div id="mainCol">
-        <%= yield.html_safe %>
+        <%= add_slide_links(yield).html_safe %>        
       </div>
     </div>
   </div>
@@ -79,23 +129,28 @@
       <p class="copyright">published under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in 2012-2019 by <a href="http://brigitte-jellinek.at">Brigitte Jellinek</a>.
       </p><p>If you want to contribute: <a href="https://github.com/web-engineering/web-engineering-textbook/fork">fork the source on github</a>
       <% if content_for?(:source_file) %>
-        and edit <a href="https://github.com/web-engineering/web-engineering-textbook/blob/master/source/<%= yield :source_file %>"><%= yield :source_file %></a>
-      <% end %> 
+        and edit <a href="https://github.com/web-engineering/web-engineering-textbook//blob/master/source/<%= yield :source_file %>"><%= yield :source_file %></a>
+      <% end %>
       </p>
     </div>
   </div>
 
-  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/responsive-tables.js"></script>
-  <script type="text/javascript" src="javascripts/guides.js"></script>
-  <script type="text/javascript" src="javascripts/syntaxhighlighter/shCore.js"></script>
-  <script type="text/javascript" src="javascripts/syntaxhighlighter/shBrushRuby.js"></script>
-  <script type="text/javascript" src="javascripts/syntaxhighlighter/shBrushXml.js"></script>
-  <script type="text/javascript" src="javascripts/syntaxhighlighter/shBrushSql.js"></script>
-  <script type="text/javascript" src="javascripts/syntaxhighlighter/shBrushPlain.js"></script>
-  <script type="text/javascript">
+  <script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/responsive-tables.js"></script>
+  <script src="javascripts/guides.js"></script>
+  <script src="javascripts/syntaxhighlighter/shCore.js"></script>
+  <script src="javascripts/syntaxhighlighter/shBrushRuby.js"></script>
+  <script src="javascripts/syntaxhighlighter/shBrushXml.js"></script>
+  <script src="javascripts/syntaxhighlighter/shBrushSql.js"></script>
+  <script src="javascripts/syntaxhighlighter/shBrushPlain.js"></script>
+  <script>
     SyntaxHighlighter.all()
     $(guidesIndex.bind);
+    $(document).ready(function(){
+      let hash = document.location.hash;
+      if(! hash) return;
+      document.getElementById(hash.substr(1)).scrollIntoView(true);
+    })
   </script>
   </body>
 </html>
