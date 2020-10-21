@@ -382,7 +382,7 @@ body {
 
 #header {
   background: #369640;
-  color: #FFF;
+  color: #fff;
   padding: 1.5em 0;
   z-index: 99;
 }
@@ -392,7 +392,6 @@ body {
   color: #333;
   padding: 0.5em 0 1.5em;
 }
-
 
 #container {
   color: #333;
@@ -428,7 +427,6 @@ body {
   background-color: white;
   max-width: 100%;
 }
-
 
 #extraCol {
   display: none;
@@ -637,8 +635,8 @@ a:visited {
   display: block;
   border: none;
   height: 1px;
-  color: #BBBBBB;
-  background: #BBBBBB;
+  color: #bbbbbb;
+  background: #bbbbbb;
 }
 
 /* Headings
@@ -756,7 +754,7 @@ h6 {
   margin-left: 0;
 }
 #feature ul li {
-  list-style: none;
+  list-style-type: "—";
   font-size: 1.1428em;
   font-weight: bold;
   position: relative;
@@ -764,8 +762,8 @@ h6 {
   padding-bottom: 20px;
 }
 #feature .wrapper > ul li:before {
-  font-family: 'FontAwesome';
-  content: '\f00c';
+  font-family: "FontAwesome";
+  content: "\f00c";
   font-size: 15px;
   position: absolute;
   color: #214f29;
@@ -1065,8 +1063,9 @@ table th {
     float: none;
     width: 100%;
     text-align: center;
-  }  
-  .nav .nav-item, .nav-item.guides-index-item {
+  }
+  .nav .nav-item,
+  .nav-item.guides-index-item {
     text-transform: uppercase;
   }
 
@@ -1077,13 +1076,12 @@ table th {
 
   .guides-index-small .guides-index-item {
     font: inherit;
-    padding-left: .75em;
-    font-size: .95em;
+    padding-left: 0.75em;
+    font-size: 0.95em;
     background-position: 96% -65px;
     -webkit-appearance: none;
-  }  
-  .nav .nav-item,
-   {
+  }
+  .nav .nav-item {
     display: block;
     margin: 0;
     width: 100%;
@@ -1092,28 +1090,25 @@ table th {
     border-top: 0;
     padding: 15px 0;
     text-align: center;
-  }  
+  }
   #guides {
     width: 100vw;
     position: relative;
     padding-left: 3px;
   }
-  li #guides dd, li #guides dt {
+  li #guides dd,
+  li #guides dt {
     text-align: left;
     padding: 0.5em;
     border-bottom: 1px #ddd solid;
   }
 
-  #guides dl.L, #guides dl.R {
+  #guides dl.L,
+  #guides dl.R {
     float: none;
     width: unset;
   }
-
 }
 
-
 @media screen and (max-width: 480px) {
-
-
-
 }
