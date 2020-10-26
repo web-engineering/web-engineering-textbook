@@ -132,9 +132,9 @@ module RailsGuides
 
       def generate_title
         if heading = Nokogiri::HTML(@header).at(:h2)
-          @title = "#{heading.text} in the Backend Development Textbook".html_safe
+          @title = "#{heading.text} in the Web Engineering Textbook".html_safe
         else
-          @title = "Backend Development Textbook"
+          @title = "Web Engineering Textbook"
         end
       end
 
@@ -157,10 +157,13 @@ module RailsGuides
       def render_page( source_file )
         @view.content_for(:source_file) { source_file  }
         @view.content_for(:output_path) { @output_path  }
+        puts "analyzing #{source_file} with header #{@header}"
         if heading = Nokogiri::HTML(@header).at(:h2) then
+          puts "yes, heading #{heading}"
           @view.content_for(:header_h2_section) { heading.text.html_safe }
           @view.content_for(:header_section) { @header }
         else
+          puts "no."
           @view.content_for(:header_h2_section) { "no heading" }
           @view.content_for(:header_section) { @header }
         end
