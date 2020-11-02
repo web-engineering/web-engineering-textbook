@@ -413,8 +413,12 @@ body {
   padding: 1em 1.5em 1em 1.25em;
   width: 17em;
   float: right;
+  /*
   font-size: 0.9285em;
   line-height: 1.3846em;
+  */
+  font-size: 15px;
+  
   margin-left: 1em;
   box-shadow: 0px 10px 5px #888;
   background-color: white;
@@ -508,11 +512,6 @@ a:visited {
 
 .guides-index-large,
 .guides-index-small .guides-index-item {
-  padding: 0.5em 1.5em;
-  border-radius: 1em;
-  -webkit-border-radius: 1em;
-  -moz-border-radius: 1em;
-  background: #214f29;
   position: relative;
   color: white;
 }
@@ -537,7 +536,7 @@ a:visited {
   }
   .nav > li {
     display: inline;
-    margin-left: 0.5em;
+    /* margin-left: 0.5em; */
   }
   .guides-index.guides-index-small {
     display: none;
@@ -554,27 +553,29 @@ a:visited {
     display: block;
     margin: 0;
     width: 100%;
+    /*
     background-color: #980905;
     border: solid 1px #620c04;
+    */
     border-top: 0;
     padding: 15px 0;
-    text-align: center;
+    text-align: right;
   }
   .nav .nav-item,
   .nav-item.guides-index-item {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   .nav .nav-item:first-child,
   .nav-item.guides-index-small {
+    /*
     border-top: solid 1px #620c04;
+    */
   }
   .guides-index.guides-index-small {
     display: block;
     margin-top: 1.5em;
   }
-  .guides-index.guides-index-large {
-    display: none;
-  }
+
   .guides-index-small .guides-index-item {
     font: inherit;
     padding-left: 0.75em;
@@ -751,16 +752,15 @@ h6 {
 }
 
 #feature ul {
-  margin-left: 0;
+  margin-left: 30px;
 }
 #feature ul li {
-  list-style-type: "—";
-  font-size: 1.1428em;
+  list-style-type: "— ";
   font-weight: bold;
   position: relative;
-  padding-left: 30px;
   padding-bottom: 20px;
 }
+
 #feature .wrapper > ul li:before {
   font-family: "FontAwesome";
   content: "\f00c";
@@ -1059,19 +1059,24 @@ table th {
 }
 
 @media screen and (max-width: 800px) {
+
+  #header h1 {
+    float: none;
+  }  
   .nav {
     float: none;
     width: 100%;
-    text-align: center;
+    text-align: right;
   }
   .nav .nav-item,
   .nav-item.guides-index-item {
+    /*
     text-transform: uppercase;
+    */
   }
 
   .guides-index.guides-index-small {
     display: block;
-    margin-top: 1.5em;
   }
 
   .guides-index-small .guides-index-item {
@@ -1085,11 +1090,12 @@ table th {
     display: block;
     margin: 0;
     width: 100%;
+    /*
     background-color: #980905;
     border: solid 1px #620c04;
+    */
     border-top: 0;
     padding: 15px 0;
-    text-align: center;
   }
   #guides {
     width: 100vw;
@@ -1110,5 +1116,14 @@ table th {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 800px) {
+  .guides-index {
+    border-radius: 1em;
+    background: #214f29;
+    padding: 0.2em 1em;
+    margin: 0 0.5em;
+  }
 }
+
+
+
