@@ -1,4 +1,6 @@
-# Dependencies
+Dependencies
+=======================
+
 
 The program you write will depend on code
 that other people have written. This guide will teach you
@@ -14,7 +16,8 @@ After working through this guide you will be able to:
 - install programs and libraries for your operating system with `brew`, `apt` or `choco`
 - know how to keep your dependencies current
 
----
+---------------------------------------------------------------------------
+
 
 ## Dependencies
 
