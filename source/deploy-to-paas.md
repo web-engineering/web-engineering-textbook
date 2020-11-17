@@ -1,0 +1,179 @@
+# Deploy to PAAS
+
+Platform as a Service - PAAS - is one
+way to deploy web apps.
+
+After reading it you should be familiar with:
+
+- different cloud service models
+- The 12factor App
+- How to deploy to heroku
+- How to deploy to dokku
+
+---
+
+## What is Cloud Computing?
+
+When you want to publish your web application you can use your own
+computer, connect it to the internet permanently, and do all the work
+of maintaining the computer and the internet connection yourself.
+
+Or you can use a service provider that takes care of part of the job.
+Depending on how much you do yourself these services have different names.
+
+This diagram [from redhat](https://www.redhat.com/en/topics/cloud-computing/what-is-paas) shows four different scenarios:
+
+_On-site_, also called _on premise_, means running your own hardware in your own room
+with your own internet connection.
+
+The following three scenarios all fall under the termin "Cloud Computing":
+
+With _Infrastructure as a Service_ the server is housed in a server room at the service
+provider. Hardware, internet connecion, power are all taken care of. You rent a virtual
+machine, sometimes with operating system preinstalled, and take care of everything form
+the operating system upwards.
+
+_Platform as a Service_ also takes care of the operating system (e.g. Linux),
+running databases and other services and providing the interpreter or runtime for
+the programming language. You rent space for your app plus the database(es) you need.
+
+With _Software as a Service_ there is no app to deploy, the whole stack is in
+the hands of the service provider.
+
+![comparison of on premise, iaas, paas, saas](iaas-paas-saas.png)
+
+For a company, moving from on premise to \*aas means employing
+fewer sysadmins and buying less hardware. It also means
+paying a lot of money to the service provider.
+
+Which alternative is feasibly and which one is cheaper for a
+specific project depends on many factors.
+
+## Why use Cloud Computing?
+
+The [NIST Definition of Cloud Computing](https://csrc.nist.gov/publications/detail/sp/800-145/final)
+lists five essential characteristics of cloud computing. The short version is:
+
+- _On-demand self-service_. A consumer can configure computing capabilities (storage, cpus,...) as needed, without human interaction with each service provider.
+- _Broad network access_. Capabilities are available over the network and accessed through standard mechanisms - mainly the web
+- _Resource pooling_. The provider’s computing resources serve multiple consumers. Different physical and virtual resources are dynamically assigned and reassigned according to demand.
+- _Rapid elasticity_. Capabilities can be elastically provisioned and released. To the consumer, the capabilities available for provisioning appear to be unlimited.
+- _Measured service_. Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.
+
+## Public vs. Private Cloud
+
+Any cloud infrastructure that is open for use by the general public is called a public cloud.
+Public does not mean free, just that any paying customer can use it.
+It exists on the premises of the cloud provider.
+
+A private cloud would be a iaas, paas, or saas that is run for the
+exclusive use of one organisation. To be called "cloud" it should
+still exhibit the five characteristics above.
+
+In this guide we will look at one example of a public paas (heroku)
+und one example of a private paas (dokku).
+
+## Using Heroku
+
+you need to
+
+- create an account on [heroku](http://heroku.com)
+- and install the [heroku command line interface (cli)](https://devcenter.heroku.com/articles/heroku-cli)
+- add your public key to heroku by running `heroku keys:add`
+
+## Using Dokku
+
+if you are reading this as part of your course at Fachhochschule Salzburg
+you already have an account on our local dokku install.
+
+you need to
+
+- install the [offical dokku client](http://dokku.viewdocs.io/dokku/deployment/remote-commands/#official-client)
+- set the environment variables (see our internal wiki)
+
+## The 12factor App
+
+In 2011 the document "the 12factor app" was published by developers from
+the company heroku. It describes how to prepare a web app
+for running on a paas.
+
+Many of these 12 factors have become commonplace for web development -
+you probably have been doing some of it all along. But let's look
+at each one in turn. A link to the original document is
+always provided in the first sentence, please read the original first!
+
+### I. Codebase
+
+[One codebase tracked in revision control, many deploys](https://12factor.net/codebase)
+
+Discussion:
+
+in 2020, git is used for all new projects. In long running projects
+you can still find some use of subversion.
+
+"Multiple apps sharing the same code"
+is explicitly discouraged for a 12 factor app. Here there is no industry consensus.
+Some companys use one app per repo, some others use Monorepos that contain many
+different apps and libraries, most famously Google. (If you have as much code
+as google git will not suffice for a monorepo)
+
+### II. Dependencies
+
+[Explicitly declare and isolate dependencies](https://12factor.net/dependencies)
+
+Dependency declaration through a file like `Gemfile`, `package.json`, `composer.json`
+is available in all modern languages for the web.
+
+### III. Config
+
+[Store config in the environment](https://12factor.net/config)
+
+In
+
+### IV. Backing services
+
+[Treat backing services as attached resources](https://12factor.net/backing-services)
+
+### V. Build, release, run
+
+[Strictly separate build and run stages](https://12factor.net/build-release-run)
+
+Here we first meet a limitation of the 12 factor app when
+we compare it to deploying PHP via SFTP:
+It is impossible to make changes to the code at runtime.
+
+### VI. Processes
+
+[Execute the app as one or more stateless processes](https://12factor.net/processes)
+
+### VII. Port binding
+
+[Export services via port binding](https://12factor.net/port-binding)
+
+this defines the interface to the app: a port.
+
+### VIII. Concurrency
+
+[Scale out via the process model](https://12factor.net/concurrency)
+
+### IX. Disposability
+
+[Maximize robustness with fast startup and graceful shutdown](https://12factor.net/disposability)
+
+### X. Dev/prod parity
+
+[Keep development, staging, and production as similar as possible](https://12factor.net/dev-prod-parity)
+
+Yes.
+
+### XI. Logs
+
+[Treat logs as event streams](https://12factor.net/logs)
+
+### XII. Admin processes
+
+[Run admin/management tasks as one-off processes](https://12factor.net/admin-processes)
+
+## See Also
+
+- [NIST Definition of Cloud Computing](https://csrc.nist.gov/publications/detail/sp/800-145/final)

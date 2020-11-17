@@ -39,6 +39,17 @@ We will discuss six different systems:
   - `npm` for javascript and node.js
   - `composer` for php
 
+### The other side
+
+While this chapter is about using dependencies, you might also consider
+what goes into creating a good dependency: how do I write code that can
+be reused? How do I split up a larger problem into smaller pieces that can
+be reused?
+
+Therese are questions of software design and software architecture. They go
+back a long time (e.g. D.L. Parnas. (1972). On the criteria to be used in decomposing systems into modules. Communications of the ACM, 15(12), 1053–1058. doi: 10.1007/978-3-642-48354-7_20, discussed in
+[morning papers](https://blog.acolyer.org/2016/09/05/on-the-criteria-to-be-used-in-decomposing-systems-into-modules/)).
+
 ### libraries.io
 
 The site [libraries.io](https://libraries.io/) collects information
