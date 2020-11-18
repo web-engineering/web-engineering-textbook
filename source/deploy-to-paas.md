@@ -41,7 +41,7 @@ the programming language. You rent space for your app plus the database(es) you 
 With _Software as a Service_ there is no app to deploy, the whole stack is in
 the hands of the service provider.
 
-![comparison of on premise, iaas, paas, saas](iaas-paas-saas.png)
+![comparison of on premise, iaas, paas, saas](images/iaas-paas-saas.png)
 
 For a company, moving from on premise to \*aas means employing
 fewer sysadmins and buying less hardware. It also means
@@ -149,7 +149,6 @@ or for another app:
 
 ```
 $ heroku config
-$ heroku config
 === obscure-springs-61542 Config Vars
 DATABASE_URL:             postgres://erout:1baa7f8@ec2-34-200-106-49.compute-1.amazonaws.com:5432/d3jjlc4
 LANG:                     en_US.UTF-8
@@ -168,6 +167,13 @@ If you look back at the environment variables above
 you can see the variable `DATABASE_URL`. This contains
 all the information needed to connect to the database -
 type of database, username, password, host, port, name of the database.
+
+````
+DATABASE_URL:             postgres://erout:1baa7f8@ec2-34-200-106-49.compute-1.amazonaws.com:5432/d3jjlc4
+````
+
+Here you can also see that Heroku uses Amazon AWS to run the database server.
+To Heroku buys iaas from aws and sells paas to us.
 
 ### V. Build, release, run
 
@@ -244,11 +250,11 @@ You can run other processes in both dokku and heroku by
 running the `run` command:
 
 ```
-heroku run db:migrate
+heroku run rails db:migrate
 ```
 
 ```
-dokku run db:migrate
+dokku run rails db:migrate
 ```
 
 ## First steps
