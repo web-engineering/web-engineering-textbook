@@ -3,12 +3,12 @@
 Platform as a Service - PAAS - is one
 way to deploy web apps.
 
-After reading it you should be familiar with:
+After reading it you should
 
-- different cloud service models
-- The 12factor App
-- How to deploy to heroku
-- How to deploy to dokku
+- know different cloud service models
+- know some of the 12 factors of the 12factor App
+- be able to deploy to heroku
+- be able to deploy to dokku
 
 ---
 
