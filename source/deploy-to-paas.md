@@ -1,4 +1,5 @@
-# Deploy to PAAS
+Deploy to PAAS
+=======================
 
 Platform as a Service - PAAS - is one
 way to deploy web apps.
@@ -10,7 +11,7 @@ After reading it you should
 - be able to deploy to heroku
 - be able to deploy to dokku
 
----
+---------------------------------------------------------------------------
 
 ## What is Cloud Computing?
 
