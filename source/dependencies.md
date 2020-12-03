@@ -74,6 +74,11 @@ which is writen in [C](https://github.com/ImageMagick/ImageMagick/tree/master/Ma
 You do this using apt or brew or
 [the windows installer with dynamic link libraries](http://www.imagemagick.org/script/binary-releases.php#windows).
 
+```
+sudo apt-get install imagemagick libmagickwand-dev  # ubuntu, wls
+brew install imagemagick                            # macos
+```
+
 The result of installing imagemagick with brew is the file `libMagickCore-6.Q16.2.dylib` and two other libraries. These are libraries that can be used by multiple programs on your computer when they are dynamically linked to those programs.
 
 When installing the ruby gem with `gem install rmagick` you get the following output:
