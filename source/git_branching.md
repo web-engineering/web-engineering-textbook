@@ -254,6 +254,3 @@ Then you need to
 ### Resources 
 
 * [Git Book: Chapter 3.2](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
-* [Ry's git tutorial: Branches 1](http://rypress.com/tutorials/git/branches-1.html)
-* [Ry's git tutorial: Branches 2](http://rypress.com/tutorials/git/branches-2.html)
-
