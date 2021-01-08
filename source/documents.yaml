@@ -1,58 +1,46 @@
--
-  name: Basics
+- name: Basics
   documents:
-    -
-      name: vi
+    - name: vi
       url: vi.html
       description: the editor vi, and how to get out of it
-    -
-      name: Using Public Key Cryptography
+    - name: Using Public Key Cryptography
       url: public_key.html
-      description: 
-    -
-      name: Git Basics
+      description:
+    - name: Git Basics
       url: git_basics.html
       description: First Steps in git
 
-    -
-      name: Using Linux on Windows for Web Development
+    - name: Using Linux on Windows for Web Development
       url: linux_on_windows.html
-      description: When using windows as your development machine you will need to install some extra tools     
--
-  name: Workflows
+      description: When using windows as your development machine you will need to install some extra tools
+- name: Workflows
   documents:
-    -
-      name: Git Branching and Merging
+    - name: Git Branching and Merging
       url: git_branching.html
       description: With branches you can work on two separate versions of your code in parallel. For example you can work on a new feature, but go back and fix an error in production in the middle of it. Git will help you keep your code sorted.
-    -
-      name: Git Rebasing
+    - name: Git Rebasing
       url: git_rebasing.html
       description: An important concept to avoid complex merges
-    -
-      name: Managing Dependencies
+    - name: Managing Dependencies
       url: dependencies.html
       description:
-    -
-      name: Testing
+    - name: Testing
       url: testing.html
       description: Automatic tests for your programs
-    -
-      name: Refactoring
+    - name: Refactoring
       url: refactoring.html
       description: Improve your code through simple refactoring steps
--
-  name: Web Operations
+    - name: Tools for better code
+      url: code.html
+      description: Let these tools find problems in your code for you
+- name: Web Operations
   documents:
-    - 
-      name: Deploy to Paas
+    - name: Deploy to Paas
       url: deploy-to-paas.html
-      description: How to deploy your app to a PAAS - platform as a service. 
-    - 
-      name: Deploy a SPA
+      description: How to deploy your app to a PAAS - platform as a service.
+    - name: Deploy a SPA
       url: deploy-spa.html
-      description: How to deploy your Single Page App    
-    - 
-      name: Webserver
+      description: How to deploy your Single Page App
+    - name: Webserver
       url: webserver.html
       description: Webserver

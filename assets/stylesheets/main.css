@@ -1126,4 +1126,7 @@ table th {
 }
 
 
-
+pre.terminal {
+  background-color: #ddd;
+  padding: 5px;
+}

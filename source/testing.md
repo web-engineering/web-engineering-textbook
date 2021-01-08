@@ -1,4 +1,5 @@
-# Testing
+Testing
+=============
 
 This guide will explain why you should write automatic tests
 for your web application.
@@ -11,7 +12,8 @@ REPO: You can find the setups discussed here in the [example setups](https://git
 
 ---
 
-## Testing Software
+Testing Software
+---------
 
 There are two ways to test software: have an actual person
 use the software or have a program automatically test the software.
