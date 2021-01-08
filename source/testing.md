@@ -6,11 +6,11 @@ for your web application.
 By referring to this guide, you will be able to:
 
 - Understand testing terminology
-- Write unit and integration tests for your application
+- Write unit and integration tests for your application (in JavaScript and Ruby)
 
 REPO: You can find the setups discussed here in the [example setups](https://github.com/web-engineering/example-setups) repository.
 
----
+-------------------------------------------
 
 Testing Software
 ---------
