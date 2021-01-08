@@ -21,6 +21,7 @@ Any automatic analysis done on the **source code** of a program
 is called **static** analysis.  The simplest form is a check
 of coding conventions. This is called "linting". 
 
+This is in contrast do **dynamic** analysis of a running program.
 
 ## Coding Convention
 
@@ -136,7 +137,7 @@ the necessary info to find and understand the problem:
 The rules that rubocop follows are called "cops". The default
 rules are [listed here](https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml).
 
-There is good documentation for each cop, you can find it on docs.rubocop.org, or by
+There is good documentation for each cop, you can find it on [docs.rubocop.org](https://docs.rubocop.org/rubocop/), or by
 googling the name:
 
 - [Layout/EmptyLineAfterGuardClause](https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylineafterguardclause)
@@ -201,8 +202,8 @@ count_persons = enroll_data_lecturer.update_all(set_fields)
 
 Here the method `update_all` is used. The cop  [SkipsModelValidations](https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsskipsmodelvalidations) warns against using it 
 method because it skips validations.  The programmer is aware of this fact
-an still choses to use the method.  Do keep rubocop from complaining
-or automatically replacing the code this cop is disabled for one line of code.
+an still choses to use the method.  To keep rubocop from complaining
+or automatically replacing the code,this cop is disabled for one line.
 
 ## Example Linter for JavaScript: ESLint
 
@@ -250,7 +251,7 @@ Overview of several tools
 
 `rubycritic` combines several tools and generates an report as several html pages:
 
-![](images/rubycritic.png)
+![](images/rubycritic-dashboard.png)
 
 ![](images/rubycritic-code.png)
 
@@ -271,6 +272,8 @@ checking for security problems:
 * [eslint-plugin-security](https://github.com/nodesecurity/eslint-plugin-security) for node.js
 
 
+For all programming langauges you also have to think about
+[security and dependencies](dependencies.html#keeping-up-to-date).
 
 See Also
 -------

@@ -236,6 +236,9 @@ To update the versions you need to override the lock-file and allow a change in 
 For each dependency system we discussed there are services out there that will tell
 you about new version or -- even more important -- new security updates for your dependencies.
 
+- [bundler-audit](https://github.com/rubysec/bundler-audit) for ruby
+- [npm-audit](https://docs.npmjs.com/cli/v6/commands/npm-audit) for javascript
+
 ## Dependencies always imply Risk
 
 Using a third party library will make you more
